@@ -147,14 +147,11 @@ ln -sf dnf5 %{buildroot}%{_bindir}/dnf
 %{_sysconfdir}/bash_completion.d/dnf5
 %{_unitdir}/dnf5-makecache.service
 %{_unitdir}/dnf5-makecache.timer
-%{_datadir}/dnf5/aliases.d/compatibility-plugins.conf
 %{_bindir}/dnf-automatic
 %{_unitdir}/dnf-automatic.service
 %{_unitdir}/dnf-automatic.timer
 %{_unitdir}/dnf5-automatic.service
 %{_unitdir}/dnf5-automatic.timer
-%{_datadir}/dnf5/aliases.d/compatibility-reposync.conf
-
 %files -n libdnf5
 %license lgpl-2.1.txt
 %config(noreplace) %{_sysconfdir}/dnf/dnf.conf
@@ -185,6 +182,8 @@ ln -sf dnf5 %{buildroot}%{_bindir}/dnf
 %{_libdir}/libdnf5/plugins/*.so
 %{_libdir}/dnf5/plugins/*.so
 %{_datadir}/dnf5/dnf5-plugins/automatic.conf
+%{_datadir}/dnf5/aliases.d/compatibility-plugins.conf
+%{_datadir}/dnf5/aliases.d/compatibility-reposync.conf
 
 %files -n python-libdnf5
 %{python3_sitearch}/libdnf5

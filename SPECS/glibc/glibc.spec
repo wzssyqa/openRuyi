@@ -366,6 +366,10 @@ make %{?_smp_mflags} %{?make_output_sync} -C cc-base test t=elf/check-localplt
 %define rtldlib lib
 %define rtld_name ld-linux-riscv64-lp64d.so.1
 %endif
+%ifarch x86_64
+%define rtld_name ld-linux-x86-64.so.2
+%endif
+
 
 %define rootsbindir %{_sbindir}
 %define slibdir %{_libdir}

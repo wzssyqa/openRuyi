@@ -54,6 +54,9 @@ This package contains development files for %{name}.
 # Remove static .a
 find %{buildroot} -type f -name *.a -delete -print
 
+# no tests.
+%check
+
 %files
 %license COPYRIGHT
 %doc README

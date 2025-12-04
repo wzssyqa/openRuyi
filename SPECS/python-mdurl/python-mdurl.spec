@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
+# SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+#
+# SPDX-License-Identifier: MulanPSL-2.0
+
+%global srcname mdurl
+
+Name:           python-%{srcname}
+Version:        0.1.2
+Release:        %autorelease
+Summary:        Markdown URL utilities
+License:        MIT
+URL:            https://github.com/executablebooks/mdurl
+#!RemoteAsset
+Source0:        https://files.pythonhosted.org/packages/source/m/%{srcname}/%{srcname}-%{version}.tar.gz
+BuildSystem:    pyproject
+
+BuildOption(install):  -l %{srcname}
+
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3-pip
+BuildRequires:  python3-flit-core
+BuildRequires:  python3-pytest
+BuildRequires:  python3dist(pytest-randomly)
+
+Provides:       python3-%{srcname}
+%python_provide python3-%{srcname}
+
+%description
+URL utilities for markdown-it parser.
+
+%generate_buildrequires
+%pyproject_buildrequires
+
+%check
+%pytest
+
+%files -f %{pyproject_files}
+%license LICENSE
+%doc README.md
+
+%changelog
+%{?autochangelog}

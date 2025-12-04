@@ -803,7 +803,7 @@ sed -i 's/LLDB_ENABLE_PYTHON/TRUE/' lldb/docs/CMakeLists.txt
 %if %{with offload}
 %global runtimes %{runtimes};offload
 %endif
-%global cfg_file_content --gcc-triple=%{_target_cpu}-unknown-linux
+%global cfg_file_content --gcc-triple=%{_target_cpu}-openruyi-linux
 %global cfg_file_content %{cfg_file_content} -gdwarf-4 -g0
 # Copy CFLAGS into ASMFLAGS, so -fcf-protection is used when compiling assembly files.
 export ASMFLAGS="%{build_cflags}"

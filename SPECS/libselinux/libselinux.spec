@@ -26,6 +26,7 @@ BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  libsepol-static >= %{libsepol_ver}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  python3 python3-devel python3-setuptools python3-pip swig
 
 BuildSystem:    autotools
 BuildOption(build): LIBDIR="%{_libdir}" CC="%__cc"
@@ -35,6 +36,8 @@ BuildOption(install): LIBDIR="%{_libdir}"
 BuildOption(install): SHLIBDIR="%{_libdir}"
 BuildOption(install): BINDIR="%{_bindir}"
 BuildOption(install): SBINDIR="%{_sbindir}"
+BuildOption(install): PIP_NO_BUILD_ISOLATION=0
+BuildOption(install): all install-pywrap
 
 %description
 libselinux provides an interface to get and set process and file
@@ -80,9 +83,22 @@ security contexts and to obtain security policy decisions.
 This package contains the static development files, which are
 necessary to develop your own software using libselinux.
 
+%package -n python3-libselinux
+Summary: SELinux python 3 bindings for libselinux
+Requires: %{name}%{?_isa} = %{version}-%{release}
+%{?python_provide:%python_provide python3-libselinux}
+
+%description -n python3-libselinux
+The libselinux-python3 package contains python 3 bindings for developing
+SELinux applications.
+
 #  no configure scripts
 %conf
 :
+
+%build -a
+%make_build pywrap
+
 %install -p
 mkdir -p %{buildroot}/%{_lib}
 mkdir -p %{buildroot}%{_libdir}
@@ -142,6 +158,11 @@ install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/selinux-ready
 
 %files static
 %{_libdir}/libselinux.a
+
+%files -n python3-libselinux
+%{python3_sitearch}/selinux/
+%{python3_sitearch}/selinux-%{version}*
+%{python3_sitearch}/_selinux*
 
 %changelog
 %{?autochangelog}

@@ -74,6 +74,7 @@ cd build-dir
 %if %{with bootstrap} && 0%{?do_profiling}
       --enable-pgo-build=lto \
 %endif
+      --disable-gprofng \
       --enable-colored-disassembly
 %undefine _configure
 
@@ -104,7 +105,6 @@ chmod a+x %{buildroot}%{_libdir}/libopcodes-*
 # No shared linking outside binutils
 rm %{buildroot}%{_libdir}/lib{bfd,opcodes}.so
 rm %{buildroot}%{_libdir}/lib{bfd,opcodes,ctf,ctf-nobfd}.la
-rm -f %{buildroot}%{_libdir}/gprofng/lib*.{l,}a
 # Remove unwanted files to shut up rpm
 rm -f %{buildroot}%{_infodir}/configure* $RPM_BUILD_ROOT%{_infodir}/standards.info*
 rm -f %{buildroot}%{_mandir}/man1/dlltool.1 $RPM_BUILD_ROOT%{_mandir}/man1/windres.1 $RPM_BUILD_ROOT%{_mandir}/man1/windmc.1
@@ -138,7 +138,6 @@ fi;
 %{_prefix}/%{_host}/bin/*
 %{_prefix}/%{_host}/lib/ldscripts
 %{_libdir}/libsframe.so.*
-%{_libdir}/libgprofng.so.*
 %{_libdir}/libctf.so.*
 %{_libdir}/libctf-nobfd.so.*
 %dir %{_libdir}/bfd-plugins
@@ -154,9 +153,6 @@ fi;
 %doc %{_infodir}/*.gz
 %{_libdir}/lib*-%{version}*.so
 %doc %{_mandir}/man1/*.1.gz
-%dir %{_libdir}/gprofng/
-%{_libdir}/gprofng/lib*.so
-%{_sysconfdir}/gprofng.rc
 
 %files devel
 %defattr(-,root,root)
@@ -165,8 +161,6 @@ fi;
 %{_libdir}/libctf.so
 %{_libdir}/libctf-nobfd.so
 %{_libdir}/libsframe.so
-%{_libdir}/libgprofng.so
-%{_docdir}/gprofng/*
 
 %changelog
 %{?autochangelog}

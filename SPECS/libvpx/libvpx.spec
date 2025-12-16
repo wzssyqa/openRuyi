@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
-# SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -13,6 +13,7 @@ URL:            https://chromium.googlesource.com/webm/libvpx
 #!RemoteAsset
 Source:         https://chromium.googlesource.com/webm/libvpx/+archive/v%{version}.tar.gz
 BuildSystem:    autotools
+
 # Add arch support for riscv64.
 Patch:          0001-libvpx-configure-add-arch.patch
 
@@ -32,7 +33,7 @@ This package contains the documentation.
 Summary:        Development files for libvpx
 Requires:       %{name} = %{version}
 
-%description devel
+%description    devel
 Development headers and library for libvpx.
 
 %conf

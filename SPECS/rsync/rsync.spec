@@ -17,6 +17,9 @@ Source0:        https://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz
 Source1:        rsyncd.conf
 BuildSystem:    autotools
 
+# include stdbool for compiler check
+Patch0:         0001-fix-include.patch
+
 BuildOption(conf):  --enable-ipv6
 BuildOption(conf):  --disable-debug
 BuildOption(conf):  --with-included-popt=no

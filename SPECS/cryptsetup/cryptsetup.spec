@@ -12,13 +12,13 @@
 %global upstream_main_version 2.8
 
 Name:           cryptsetup
-Version:        %{upstream_main_version}.1
+Version:        %{upstream_main_version}.2
 Release:        %autorelease
 Summary:        Utility for setting up encrypted disks
 License:        GPL-2.0-or-later WITH cryptsetup-OpenSSL-exception AND LGPL-2.1-or-later WITH cryptsetup-OpenSSL-exception
 URL:            https://gitlab.com/cryptsetup/cryptsetup
-#!RemoteAsset
-Source0:        https://www.kernel.org/pub/linux/utils/%{name}/v2.8/%{name}-%{version}.tar.xz
+#!RemoteAsset   sha256:dd9ede9875976cb25f3d29bfabf343b1c60f6186646b67ef5e40e60ab4935ec1
+Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v%{upstream_main_version}/cryptsetup-%{version}.tar.xz
 BuildSystem:    autotools
 
 BuildOption(conf):  --enable-fips

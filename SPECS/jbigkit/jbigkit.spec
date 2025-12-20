@@ -62,6 +62,10 @@ install -p -m0755 pbmtools/pbmtojbg %{buildroot}%{_bindir}
 install -p -m0755 pbmtools/pbmtojbg85 %{buildroot}%{_bindir}
 install -p -m0644 pbmtools/*.1 %{buildroot}%{_mandir}/man1
 
+%check
+# have to run tests in serial
+make test -j1
+
 %files
 %license COPYING
 %{_bindir}/jbgtopbm

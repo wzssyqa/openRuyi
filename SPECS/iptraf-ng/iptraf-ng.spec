@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
-# SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -34,6 +34,9 @@ indicators.
 
 # No configure.
 %conf
+
+%check
+# No tests here.
 
 %install -a
 install -D -m 0644 -p %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/iptraf-ng

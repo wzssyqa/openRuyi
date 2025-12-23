@@ -1,31 +1,35 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-Summary:   The GNU disk partition manipulation program
-Name:      parted
-Version:   3.6
-Release:   %autorelease
-URL:       https://www.gnu.org/software/parted/
+Name:           parted
+Version:        3.6
+Release:        %autorelease
+Summary:        The GNU disk partition manipulation program
+License:        GPLv3+
+URL:            https://www.gnu.org/software/parted/
 #!RemoteAsset
-Source0:   https://ftpmirror.gnu.org/gnu/parted/parted-%{version}.tar.xz
-Patch0:    0001-fix-do_version-parameters.patch
-License:   GPLv3+
+Source0:        https://ftpmirror.gnu.org/gnu/parted/parted-%{version}.tar.xz
+BuildSystem:    autotools
 
-BuildRequires: readline-devel gettext-devel
-BuildRequires: autoconf
-BuildRequires: automake
-BuildRequires: libtool
-BuildRequires: texinfo
-BuildRequires: gcc
-BuildRequires: make util-linux-devel
+Patch0:         0001-fix-do_version-parameters.patch
 
-BuildSystem: autotools
-BuildOption(conf): --enable-shared
-BuildOption(conf): --disable-device-mapper
-BuildOption(conf): --disable-static
+BuildOption(conf):  --enable-shared
+BuildOption(conf):  --disable-device-mapper
+BuildOption(conf):  --disable-static
+
+BuildRequires:  readline-devel
+BuildRequires:  gettext-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  texinfo
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  util-linux-devel
 
 %description
 The GNU Parted program allows you to create, destroy, resize, move,
@@ -33,10 +37,11 @@ and copy hard disk partitions. Parted can be used for creating space
 for new operating systems, reorganizing disk usage, and copying data
 to new hard disks.
 
-%package devel
-Summary:  Files for developing apps which will manipulate disk partitions
-Requires: %{name} = %{version}-%{release}
-%description devel
+%package        devel
+Summary:        Files for developing apps which will manipulate disk partitions
+Requires:       %{name} = %{version}-%{release}
+
+%description    devel
 The GNU Parted library is a set of routines for hard disk partition
 manipulation. If you want to develop programs that manipulate disk
 partitions and filesystems using the routines provided by the GNU

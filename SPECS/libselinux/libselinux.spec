@@ -4,9 +4,9 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-%define libsepol_ver 3.8.1
+%define libsepol_ver 3.9
 Name:           libselinux
-Version:        3.8.1
+Version:        3.9
 Release:        %autorelease
 Summary:        SELinux runtime library and utilities
 License:        Public-Domain
@@ -94,7 +94,6 @@ SELinux applications.
 
 #  no configure scripts
 %conf
-:
 
 %build -a
 %make_build pywrap
@@ -111,7 +110,7 @@ mv %{buildroot}%{_sbindir}/getdefaultcon %{buildroot}%{_sbindir}/selinuxdefcon
 mv %{buildroot}%{_sbindir}/getconlist %{buildroot}%{_sbindir}/selinuxconlist
 install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/selinux-ready
 
-# TODO: enable test.
+# No tests.
 %check
 
 %files -n selinux-tools

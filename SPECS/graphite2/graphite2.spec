@@ -38,7 +38,7 @@ system implementation.
 
 %package        devel
 Summary:        Files for developing with graphite2
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 Includes and definitions for developing with graphite2.

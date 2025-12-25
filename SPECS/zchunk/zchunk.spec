@@ -40,15 +40,10 @@ library, libzck.
 # Remove bundled sha libraries
 rm -rf src/lib/hash/sha*
 
-%install -a
-mkdir -p %{buildroot}%{_libexecdir}
-install contrib/gen_xml_dictionary %{buildroot}%{_libexecdir}/zck_gen_xml_dictionary
-
 %files
 %doc README.md contrib
 %{_bindir}/zck*
 %{_bindir}/unzck
-%{_libexecdir}/zck_gen_xml_dictionary
 %{_mandir}/man1/*.gz
 %{_libdir}/libzck.so.*
 

@@ -1,7 +1,7 @@
 From 4a4a57b8cbc16bd496ca5f771d9769fea34712c6 Mon Sep 17 00:00:00 2001
 From: "Guo Ren (Alibaba DAMO Academy)" <guoren@kernel.org>
 Date: Sun, 13 Jul 2025 11:53:21 -0400
-Subject: [PATCH 36/97] FROMLIST: riscv: errata: Add ERRATA_THEAD_WRITE_ONCE
+Subject: [PATCH 036/102] FROMLIST: riscv: errata: Add ERRATA_THEAD_WRITE_ONCE
  fixup
 
 The early version of XuanTie C910 core has a store merge buffer

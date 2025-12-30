@@ -1,7 +1,7 @@
 From 48d48b40fe4b5ca6ed687b2a6b572b6ab6a2ce3e Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Thu, 25 Dec 2025 00:12:01 +0800
-Subject: [PATCH 51/97] FROMLIST: drm/bridge: add a driver for T-Head TH1520
+Subject: [PATCH 051/102] FROMLIST: drm/bridge: add a driver for T-Head TH1520
  HDMI controller
 
 T-Head TH1520 SoC contains a Synopsys DesignWare HDMI controller (paired

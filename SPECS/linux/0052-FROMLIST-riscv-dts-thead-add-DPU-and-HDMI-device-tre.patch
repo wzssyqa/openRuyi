@@ -1,7 +1,7 @@
 From da648da1b04d33f796c6fec6bef8c750f8a92d26 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Thu, 25 Dec 2025 00:12:02 +0800
-Subject: [PATCH 52/97] FROMLIST: riscv: dts: thead: add DPU and HDMI device
+Subject: [PATCH 052/102] FROMLIST: riscv: dts: thead: add DPU and HDMI device
  tree nodes
 
 T-Head TH1520 SoC contains a Verisilicon DC8200 display controller

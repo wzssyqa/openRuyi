@@ -1,7 +1,7 @@
 From e963a747dc5cb5ee2b839d1b4b1b3805232f9054 Mon Sep 17 00:00:00 2001
 From: Charles Mirabile <cmirabil@redhat.com>
 Date: Fri, 12 Dec 2025 13:47:17 -0500
-Subject: [PATCH 35/97] UPSTREAM: lib/crypto: riscv: Add poly1305-core.S to
+Subject: [PATCH 035/102] UPSTREAM: lib/crypto: riscv: Add poly1305-core.S to
  .gitignore
 
 poly1305-core.S is an auto-generated file, so it should be ignored.

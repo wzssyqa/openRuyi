@@ -1,8 +1,8 @@
 From 608bc0e4792b5c205e694cbebcee1a433dbe0881 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Thu, 25 Dec 2025 00:12:00 +0800
-Subject: [PATCH 50/97] FROMLIST: dt-bindings: display/bridge: add binding for
- TH1520 HDMI controller
+Subject: [PATCH 050/102] FROMLIST: dt-bindings: display/bridge: add binding
+ for TH1520 HDMI controller
 
 T-Head TH1520 SoC contains a Synopsys DesignWare HDMI controller paired
 with DesignWare HDMI PHY, with an extra clock gate for HDMI pixel clock

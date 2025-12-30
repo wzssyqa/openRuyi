@@ -1,7 +1,7 @@
 From e5cf2161b04dace8dd8869c60d18553bb3267ae1 Mon Sep 17 00:00:00 2001
 From: Vivian Wang <wangruikang@iscas.ac.cn>
 Date: Wed, 24 Dec 2025 11:10:50 +0800
-Subject: [PATCH 63/97] FROMLIST: PCI/MSI: Check msi_addr_mask in
+Subject: [PATCH 063/102] FROMLIST: PCI/MSI: Check msi_addr_mask in
  msi_verify_entries()
 
 Instead of a 32-bit/64-bit dichotomy, check the MSI address against

@@ -1,8 +1,8 @@
 From 8cdbe4d29517f476a55828027838bdecfc1f25c4 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Thu, 25 Dec 2025 00:12:04 +0800
-Subject: [PATCH 54/97] FROMLIST: MAINTAINERS: assign myself as maintainer for
- verisilicon DC driver
+Subject: [PATCH 054/102] FROMLIST: MAINTAINERS: assign myself as maintainer
+ for verisilicon DC driver
 
 As I am the author of this rewritten driver, it makes sense for me to be
 the maintainer.

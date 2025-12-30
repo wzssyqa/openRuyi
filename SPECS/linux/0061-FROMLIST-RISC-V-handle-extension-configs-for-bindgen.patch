@@ -1,8 +1,8 @@
 From f6320526a70ba7ffa81c9f058c125c54a0541f35 Mon Sep 17 00:00:00 2001
 From: Asuna Yang <spriteovo@gmail.com>
 Date: Thu, 4 Dec 2025 08:54:54 +0100
-Subject: [PATCH 61/97] FROMLIST: RISC-V: handle extension configs for bindgen,
- re-enable gcc + rust builds
+Subject: [PATCH 061/102] FROMLIST: RISC-V: handle extension configs for
+ bindgen, re-enable gcc + rust builds
 
 Commit 33549fcf37ec ("RISC-V: disallow gcc + rust builds") disabled GCC
 + Rust builds for RISC-V due to differences in extension handling

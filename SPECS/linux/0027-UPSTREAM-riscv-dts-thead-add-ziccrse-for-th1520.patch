@@ -1,7 +1,7 @@
 From 471ce1c46b4675490aeade06c1eee5d2b24ec6b6 Mon Sep 17 00:00:00 2001
 From: Han Gao <rabenda.cn@gmail.com>
 Date: Fri, 19 Sep 2025 04:44:48 +0800
-Subject: [PATCH 27/97] UPSTREAM: riscv: dts: thead: add ziccrse for th1520
+Subject: [PATCH 027/102] UPSTREAM: riscv: dts: thead: add ziccrse for th1520
 
 Existing rv64 hardware conforms to the rva20 profile.
 

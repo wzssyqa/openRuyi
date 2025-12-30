@@ -1,8 +1,8 @@
 From e2a4f3f0d70ceffd82a64a598300c4e2d6a6c917 Mon Sep 17 00:00:00 2001
 From: Yao Zi <ziyao@disroot.org>
 Date: Thu, 20 Nov 2025 13:14:15 +0000
-Subject: [PATCH 45/97] FROMLIST: clk: thead: th1520-ap: Support CPU frequency
- scaling
+Subject: [PATCH 045/102] FROMLIST: clk: thead: th1520-ap: Support CPU
+ frequency scaling
 
 On TH1520 SoC, c910_clk feeds the CPU cluster. It could be glitchlessly
 reparented to one of the two PLLs: either to cpu_pll0 indirectly through

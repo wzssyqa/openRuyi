@@ -1,7 +1,7 @@
 From d5d9fb418d6178c7140e4889e8421e7b248b6b78 Mon Sep 17 00:00:00 2001
 From: Jisheng Zhang <jszhang@kernel.org>
 Date: Thu, 28 Sep 2023 00:42:22 +0800
-Subject: [PATCH 57/97] FROMLIST: usb: dwc3: add T-HEAD TH1520 usb driver
+Subject: [PATCH 057/102] FROMLIST: usb: dwc3: add T-HEAD TH1520 usb driver
 
 Adds TH1520 Glue layer to support USB controller on T-HEAD TH1520 SoC.
 There is a DesignWare USB3 DRD core in TH1520 SoCs, the dwc3 core is

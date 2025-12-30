@@ -1,7 +1,7 @@
 From 925f6d60cdede4a28a1fd51d15865d4f323c31a2 Mon Sep 17 00:00:00 2001
 From: Charles Mirabile <cmirabil@redhat.com>
 Date: Fri, 24 Oct 2025 09:36:43 +0100
-Subject: [PATCH 34/97] UPSTREAM: irqchip/sifive-plic: Add support for
+Subject: [PATCH 034/102] UPSTREAM: irqchip/sifive-plic: Add support for
  UltraRISC DP1000 PLIC
 
 Add a new compatible for the plic found in UltraRISC DP1000 with a quirk to

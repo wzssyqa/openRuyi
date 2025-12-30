@@ -1,7 +1,7 @@
 From 849b47d0b1bf21dbe4f5e194b7ef14ca30471223 Mon Sep 17 00:00:00 2001
 From: Michal Wilczynski <m.wilczynski@samsung.com>
 Date: Thu, 16 Oct 2025 15:38:06 +0200
-Subject: [PATCH 29/97] UPSTREAM: riscv: dts: thead: Add PWM controller node
+Subject: [PATCH 029/102] UPSTREAM: riscv: dts: thead: Add PWM controller node
 
 Add the Device Tree node for the T-HEAD TH1520 SoC's PWM controller.
 

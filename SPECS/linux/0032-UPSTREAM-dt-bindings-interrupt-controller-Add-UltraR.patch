@@ -1,7 +1,7 @@
 From 42dfd56073dd5478e239070bf14ff00ea7b45714 Mon Sep 17 00:00:00 2001
 From: Charles Mirabile <cmirabil@redhat.com>
 Date: Fri, 24 Oct 2025 09:36:41 +0100
-Subject: [PATCH 32/97] UPSTREAM: dt-bindings: interrupt-controller: Add
+Subject: [PATCH 032/102] UPSTREAM: dt-bindings: interrupt-controller: Add
  UltraRISC DP1000 PLIC
 
 Add compatible strings for the PLIC found in UltraRISC DP1000 SoC.

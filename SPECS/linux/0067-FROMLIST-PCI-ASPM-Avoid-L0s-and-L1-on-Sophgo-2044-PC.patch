@@ -1,7 +1,7 @@
 From 457d01fa2359008c374191442e69e88467d5a947 Mon Sep 17 00:00:00 2001
 From: Inochi Amaoto <inochiama@gmail.com>
 Date: Thu, 25 Dec 2025 18:05:29 +0800
-Subject: [PATCH 67/97] FROMLIST: PCI/ASPM: Avoid L0s and L1 on Sophgo 2044
+Subject: [PATCH 067/102] FROMLIST: PCI/ASPM: Avoid L0s and L1 on Sophgo 2044
  PCIe [1f1c:2044] Root Ports
 
 Since commit f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM

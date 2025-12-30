@@ -1,7 +1,7 @@
 From 0079a786ff3240416f0c242e7bbca685994c4206 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Thu, 25 Dec 2025 00:12:05 +0800
-Subject: [PATCH 55/97] FROMLIST: mailmap: map all Icenowy Zheng's mail
+Subject: [PATCH 055/102] FROMLIST: mailmap: map all Icenowy Zheng's mail
  addresses
 
 Map all mail addresses Icenowy Zheng had used to the personal mailbox

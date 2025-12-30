@@ -1,7 +1,7 @@
 From a9ff85c7091f7a3d0c35221d248d5e7a72df4707 Mon Sep 17 00:00:00 2001
 From: Asuna Yang <spriteovo@gmail.com>
 Date: Thu, 4 Dec 2025 08:54:51 +0100
-Subject: [PATCH 58/97] FROMLIST: rust: export BINDGEN_TARGET from a separate
+Subject: [PATCH 058/102] FROMLIST: rust: export BINDGEN_TARGET from a separate
  Makefile
 
 A subsequent commit will add a new function `bindgen-option` to

@@ -1,7 +1,7 @@
 From f800c51ef5a2aa5737c45addbf76dde57513eced Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Thu, 25 Dec 2025 00:11:59 +0800
-Subject: [PATCH 49/97] FROMLIST: drm: verisilicon: add a driver for
+Subject: [PATCH 049/102] FROMLIST: drm: verisilicon: add a driver for
  Verisilicon display controllers
 
 This is a from-scratch driver targeting Verisilicon DC-series display

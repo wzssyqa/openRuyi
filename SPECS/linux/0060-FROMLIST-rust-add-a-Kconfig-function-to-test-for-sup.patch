@@ -1,7 +1,7 @@
 From 21bdf435dbd5d3e5207ff6263d302c0915897a3f Mon Sep 17 00:00:00 2001
 From: Asuna Yang <spriteovo@gmail.com>
 Date: Thu, 4 Dec 2025 08:54:53 +0100
-Subject: [PATCH 60/97] FROMLIST: rust: add a Kconfig function to test for
+Subject: [PATCH 060/102] FROMLIST: rust: add a Kconfig function to test for
  support of bindgen options
 
 Add a new `bindgen-backend-option` Kconfig function to test whether the

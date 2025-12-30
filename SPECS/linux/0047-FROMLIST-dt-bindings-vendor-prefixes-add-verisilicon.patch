@@ -1,7 +1,8 @@
 From 0fa5ab7292c5913983978c62238059688227e701 Mon Sep 17 00:00:00 2001
 From: Icenowy Zheng <uwu@icenowy.me>
 Date: Thu, 25 Dec 2025 00:11:57 +0800
-Subject: [PATCH 47/97] FROMLIST: dt-bindings: vendor-prefixes: add verisilicon
+Subject: [PATCH 047/102] FROMLIST: dt-bindings: vendor-prefixes: add
+ verisilicon
 
 VeriSilicon is a Silicon IP vendor, which is the current owner of
 Vivante series video-related IPs and Hantro series video codec IPs.

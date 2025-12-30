@@ -1,7 +1,7 @@
 From 7dcc0c0cc449385e3d3adca3b4000e53fbf227ab Mon Sep 17 00:00:00 2001
 From: Vivian Wang <wangruikang@iscas.ac.cn>
 Date: Wed, 24 Dec 2025 11:10:51 +0800
-Subject: [PATCH 64/97] FROMLIST: drm/radeon: Raise msi_addr_mask to 40 bits
+Subject: [PATCH 064/102] FROMLIST: drm/radeon: Raise msi_addr_mask to 40 bits
  for pre-Bonaire
 
 The code was originally written using no_64bit_msi, which restricts the

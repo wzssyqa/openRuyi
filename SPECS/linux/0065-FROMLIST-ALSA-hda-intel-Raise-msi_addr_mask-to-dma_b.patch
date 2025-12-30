@@ -1,7 +1,7 @@
 From 30b6c81c56fad709c917c94bee158b4dc1742e7c Mon Sep 17 00:00:00 2001
 From: Vivian Wang <wangruikang@iscas.ac.cn>
 Date: Wed, 24 Dec 2025 11:10:52 +0800
-Subject: [PATCH 65/97] FROMLIST: ALSA: hda/intel: Raise msi_addr_mask to
+Subject: [PATCH 065/102] FROMLIST: ALSA: hda/intel: Raise msi_addr_mask to
  dma_bits
 
 The code was originally written using no_64bit_msi, which restricts the

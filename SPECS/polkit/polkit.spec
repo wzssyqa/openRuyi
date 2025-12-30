@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
-# SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileCopyrightText: (C) 2025, 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
+# SPDX-FileCopyrightText: (C) 2025, 2026 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
 #
@@ -18,18 +18,22 @@ BuildSystem:    meson
 
 BuildOption(conf):    -D session_tracking=logind
 BuildOption(conf):    -D systemdsystemunitdir="%{_unitdir}"
-BuildOption(conf):    -D os_type=suse
+BuildOption(conf):    -D pam_include=system-auth
 BuildOption(conf):    -D pam_module_dir="%{_pam_moduledir}"
-BuildOption(conf):    -D pam_prefix="%{_pam_vendordir}"
 BuildOption(conf):    -D examples=false
 BuildOption(conf):    -D tests=false
 BuildOption(conf):    -D man=false
-BuildOption(conf):    -D c_args="%{optflags} -Wno-error=deprecated-declarations"
+BuildOption(conf):    -D c_args="%{build_cflags} -Wno-error=deprecated-declarations"
 BuildOption(conf):    -D introspection=false
 BuildOption(conf):    -D gtk_doc=false
 
-BuildRequires:  python3 meson ninja
-BuildRequires:  gcc-c++ expat-devel pam-devel pkgconfig
+BuildRequires:  python3
+BuildRequires:  meson
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  gcc-c++
+BuildRequires:  expat-devel
+BuildRequires:  pam-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(duktape) >= 2.2.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -43,8 +47,7 @@ PolicyKit is a toolkit for defining and handling authorizations.
 
 %package devel
 Summary:        Development files for PolicyKit
-Requires:       %{name} = %{version}
-Requires:       pkgconfig
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 Development files for the PolicyKit Authorization Framework.
@@ -53,7 +56,7 @@ Development files for the PolicyKit Authorization Framework.
 install -d %{buildroot}%{_localstatedir}/lib/polkit
 install -m0644 %{SOURCE1} %{buildroot}%{_datadir}/polkit-1/rules.d/
 mkdir -p %{buildroot}%{_sysconfdir}/polkit-1/actions
-rm -rf %{buildroot}%{_datadir}/locale
+%find_lang polkit-1 --generate-subpackages
 
 %post
 # The implied (systemctl preset) will fail and complain, but the macro hides
@@ -76,9 +79,9 @@ rm -rf %{buildroot}%{_datadir}/locale
 %{_bindir}/pkcheck
 %{_bindir}/pkttyagent
 %verify(not mode) %attr(4755,root,root) %{_bindir}/pkexec
-%dir /usr/lib/polkit-1
-/usr/lib/polkit-1/polkitd
-%verify(not mode) %attr(4755,root,root) /usr/lib/polkit-1/polkit-agent-helper-1
+%dir %{_prefix}/lib/polkit-1
+%{_prefix}/lib/polkit-1/polkitd
+%verify(not mode) %attr(4755,root,root) %{_prefix}/lib/polkit-1/polkit-agent-helper-1
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system-services
 %{_datadir}/dbus-1/system-services/org.freedesktop.PolicyKit1.service
@@ -90,7 +93,7 @@ rm -rf %{buildroot}%{_datadir}/locale
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy
 %attr(0555,root,root) %dir %{_datadir}/polkit-1/rules.d
 %{_datadir}/polkit-1/rules.d/50-default.rules
-%{_pam_vendordir}/polkit-1
+%config(noreplace) %{_prefix}/lib/pam.d/polkit-1
 %dir %{_sysconfdir}/polkit-1
 %attr(0750,root,polkitd) %dir %{_sysconfdir}/polkit-1/rules.d
 %dir %{_sysconfdir}/polkit-1/actions

@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
-# SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileCopyrightText: (C) 2025, 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
+# SPDX-FileCopyrightText: (C) 2025, 2026 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
@@ -15,7 +15,6 @@ Source0:        https://libopenraw.freedesktop.org/download/exempi-%{version}.ta
 BuildSystem:    autotools
 
 BuildOption(conf):  CPPFLAGS="-I%{_includedir} -fno-strict-aliasing -DBanAllEntityUsage=1"
-BuildOption(conf):  --disable-static
 
 BuildRequires:  gcc-c++
 BuildRequires:  make
@@ -35,7 +34,7 @@ Adobe XMP SDK to work on UNIX.
 
 %package        devel
 Summary:        Headers for developing programs that will use %{name}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       pkgconfig
 
 %description    devel

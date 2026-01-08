@@ -1,20 +1,20 @@
-# SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
-# SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileCopyrightText: (C) 2025, 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
+# SPDX-FileCopyrightText: (C) 2025, 2026 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: ayostl <yao_xp@yeah.net>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           tmux
-Version:        3.5a
+Version:        3.6a
 Release:        %autorelease
 Summary:        A terminal multiplexer
 # SOURCE0 licensed under ISC AND BSD, SOURCE1 licensed under GPL-2.0-only
 License:        ISC AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only
 URL:            https://tmux.github.io/
-#!RemoteAsset
+#!RemoteAsset:  sha256:b6d8d9c76585db8ef5fa00d4931902fa4b8cbe8166f528f44fc403961a3f3759
 Source0:        https://github.com/tmux/tmux/releases/download/%{version}/tmux-%{version}.tar.gz
-#!RemoteAsset
+#!RemoteAsset:  sha256:4e2179053376f4194b342249d75c243c1573c82c185bfbea008be1739048e709
 Source1:        https://github.com/imomaliev/tmux-bash-completion/raw/refs/heads/master/completions/tmux
 BuildSystem:    autotools
 

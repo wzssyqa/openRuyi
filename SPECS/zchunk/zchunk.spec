@@ -1,16 +1,16 @@
-# SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
-# SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileCopyrightText: (C) 2025, 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
+# SPDX-FileCopyrightText: (C) 2025, 2026 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           zchunk
-Version:        1.5.1
+Version:        1.5.3
 Release:        %autorelease
 Summary:        Compressed file format that allows easy deltas
 License:        BSD-2-Clause AND MIT
 URL:            https://github.com/zchunk/zchunk
-#!RemoteAsset
+#!RemoteAsset:  sha256:832381dafe192109742c141ab90a6bc0a9d7e9926a4bafbdf98f596680da2a95
 Source0:        %{url}/archive/%{version}/zchunk-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  pkgconfig(libzstd)
@@ -19,7 +19,9 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  meson
 Provides:       bundled(buzhash-urlblock) = 0.1
 BuildSystem:    meson
-BuildOption(conf):  -Dwith-openssl=enabled -Dwith-zstd=enabled
+
+BuildOption(conf):  -Dwith-openssl=enabled
+BuildOption(conf):  -Dwith-zstd=enabled
 
 %description
 zchunk is a compressed file format that splits the file into independent

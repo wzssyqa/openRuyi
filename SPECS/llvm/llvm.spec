@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
-# SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileCopyrightText: (C) 2025, 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
+# SPDX-FileCopyrightText: (C) 2025, 2026 openRuyi Project Contributors
 # SPDX-FileContributor: jchzhou <zhoujiacheng@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
@@ -73,6 +73,10 @@
 %bcond lto_build 0
 %else
 %bcond lto_build 1
+%endif
+
+%if %{without lto_build}
+%global _lto_cflags %{nil}
 %endif
 
 # Make sure that we are not building with a newer compiler than the targeted

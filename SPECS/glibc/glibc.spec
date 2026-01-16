@@ -133,6 +133,8 @@ BuildRequires:  python3-pexpect
 BuildRequires:  gdb-devel
 BuildRequires:  zlib-devel
 %endif
+# Provide Scrt1.o for _FORTIFY_SOURCE configure.
+BuildRequires:  glibc-devel
 
 Patch100:       glibc-2.4-china.diff
 
@@ -435,12 +437,6 @@ ln -s . %{buildroot}%{slibdir}/lp64d
 %endif
 
 %if %{build_main}
-
-# We don't want to strip the .symtab from our libraries in find-debuginfo.sh,
-# certainly not from libc.so.* because it is used by libthread_db to find
-# some non-exported symbols in order to detect if threading support
-# should be enabled.
-export STRIP_KEEP_SYMTAB=*.so*
 
 # Install base glibc
 %make_install install_root=%{buildroot} -C cc-base

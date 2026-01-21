@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,23 +12,27 @@ Name:           chkconfig
 Summary:        A system tool for maintaining the /etc/rc*.d hierarchy
 Version:        1.33
 Release:        %autorelease
-License:        G-PL-2.0-only
+License:        GPL-2.0-only
 URL:            https://github.com/fedora-sysv/chkconfig
 #!RemoteAsset
 Source:         https://github.com/fedora-sysv/chkconfig/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildSystem:    autotools
 
-BuildOption(build): RPM_OPT_FLAGS="%{build_cflags}"
-BuildOption(build): LDFLAGS="%{build_ldflags}"
-BuildOption(build): MERGED_SBIN=%{merged_sbin}
+BuildOption(build):  RPM_OPT_FLAGS="%{build_cflags}"
+BuildOption(build):  LDFLAGS="%{build_ldflags}"
+BuildOption(build):  MERGED_SBIN=%{merged_sbin}
+BuildOption(install):  MANDIR=%{_mandir}
+BuildOption(install):  SBINDIR=%{_sbindir}
 
-BuildOption(install): MANDIR=%{_mandir}
-BuildOption(install): SBINDIR=%{_sbindir}
+BuildRequires:  pkgconfig(libnewt)
+BuildRequires:  pkgconfig(popt)
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  pkgconfig(systemd)
 
 Provides:       update-alternatives
 Provides:       alternatives
-BuildRequires:  newt-devel popt-devel libselinux-devel gcc make
-BuildRequires:  pkgconfig(systemd)
 
 %description
 Chkconfig is a basic system utility.  It updates and queries runlevel

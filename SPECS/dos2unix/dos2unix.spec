@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,17 +12,19 @@ Release:        %autorelease
 Summary:        Text file format converters
 License:        BSD-3-Clause
 URL:            https://waterlan.home.xs4all.nl/dos2unix.html
+# VCS: No VCS link available
 #!RemoteAsset
 Source:         https://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz
 BuildSystem:    autotools
 
 BuildOption(build):   LDFLAGS="%{build_ldflags}" prefix=%{_prefix}
-BuildOption(install): prefix=%{_prefix}
+BuildOption(install):  prefix=%{_prefix}
 
 BuildRequires:  gcc
 BuildRequires:  gettext
 BuildRequires:  make
-Provides:       unix2dos = %{version}
+
+Provides:       unix2dos = %{version}-%{release}
 
 %description
 Convert text files with DOS or Mac line endings to Unix line endings and

@@ -14,7 +14,7 @@ Release:        %autorelease
 Summary:        The Berkeley DB database library for C
 License:        BSD-3-Clause AND LGPL-2.1-only AND Sleepycat
 URL:            https://www.oracle.com/database/berkeley-db/
-# This package does not have a VCS link
+# VCS: This package does not have a VCS link
 #!RemoteAsset
 Source0:        https://download.oracle.com/berkeley-db/db-%{version}.tar.gz
 # I really don't want to use autotools here
@@ -39,7 +39,7 @@ be installed on all systems.
 
 %package        utils
 Summary:        Command line tools for managing Berkeley DB databases
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    utils
 The Berkeley Database (Berkeley DB) is a programmatic toolkit that
@@ -51,7 +51,7 @@ recovery. DB supports C, C++ and Perl APIs.
 
 %package        devel
 Summary:        C development files for the Berkeley DB library
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 The Berkeley Database (Berkeley DB) is a programmatic toolkit that
@@ -64,8 +64,6 @@ Berkeley DB.
 %autosetup -n db-%{version}
 cd dist
 ./s_config
-
-
 
 %conf
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -std=gnu99 -pthread"
@@ -125,7 +123,6 @@ mv examples docs
 
 # no tests
 %check
-
 
 %files
 %license LICENSE

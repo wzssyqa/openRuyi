@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
-# SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
+# SPDX-FileCopyrightText: (C) 2025, 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
+# SPDX-FileCopyrightText: (C) 2025, 2026 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
 #
@@ -29,10 +29,13 @@ of an executable and change the RPATH of an executable or library.
 %conf -p
 autoreconf -fiv
 
+%check -p
+# Mostly this is to avoid -Wl,-z,noexecstack break the functional tests.
+sed -i 's/^LDFLAGS = .*$/LDFLAGS = -Wl,-z,relro,-z,now/' tests/Makefile
+
 %files
 %license COPYING
 %doc README.md
-%doc %{_docdir}/%{name}
 %{_bindir}/patchelf
 %{_mandir}/man1/patchelf.1*
 %{_datadir}/zsh/site-functions/_patchelf

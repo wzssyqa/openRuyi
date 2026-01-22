@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -8,18 +9,18 @@
 %global __provides_exclude ^perl\\(
 %global __requires_exclude ^perl\\((DocsParser|Enum|Function|FunctionBase|GtkDefs|Object|Output|Property|Util|WrapParser)\\)
 
-
 Name:           glibmm
 Version:        2.86.0
 Release:        %autorelease
 Summary:        C++ interface for the GLib library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 URL:            https://gtkmm.org/
+VCS:            git:https://gitlab.gnome.org/GNOME/gtkmm.git
 #!RemoteAsset
 Source:         https://download.gnome.org/sources/glibmm/2.86/glibmm-%{version}.tar.xz
 BuildSystem:    meson
 
-BuildOption(conf): -Dbuild-documentation=false
+BuildOption(conf):  -Dbuild-documentation=false
 
 BuildRequires:  meson
 BuildRequires:  gcc-c++
@@ -35,7 +36,7 @@ C++ and makes it possible for gtkmm to wrap GObject-based APIs.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name}%{?_isa} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for

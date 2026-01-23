@@ -3,6 +3,7 @@
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: jchzhou <zhoujiacheng@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <jialin.oerv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -16,6 +17,7 @@ URL:            https://github.com/vcrhonek/hwdata
 Source0:        https://github.com/vcrhonek/hwdata/archive/v%{version}.tar.gz
 BuildArch:      noarch
 BuildSystem:    autotools
+
 BuildOption(install):  libdir=%{_libdir}
 
 BuildRequires:  make

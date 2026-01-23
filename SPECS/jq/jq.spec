@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Dingli Zhang <dingli@iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -13,6 +14,7 @@ Release:        %autorelease
 Summary:        A lightweight and flexible command-line JSON processor
 License:        MIT AND ICU AND CC-BY-3.0
 URL:            https://jqlang.org/
+VCS:            git:https://github.com/jqlang/jq
 #!RemoteAsset
 Source0:        https://github.com/jqlang/jq/releases/download/jq-%{version}/jq-%{version}.tar.gz
 BuildSystem:    autotools
@@ -23,7 +25,7 @@ BuildRequires:  make
 BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  chrpath
-BuildRequires:  oniguruma-devel
+BuildRequires:  pkgconfig(oniguruma)
 %if %{with valgrind}
 BuildRequires:  valgrind
 %endif
@@ -36,7 +38,7 @@ It can mangle the data format that you have into the one that you want.
 
 %package        devel
 Summary:        Development files for jq
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 Development files for jq.

@@ -15,7 +15,8 @@ Version:        2.8.0
 Release:        %autorelease
 Summary:        Tools for configuring the console (keyboard, virtual terminals, etc.)
 License:        GPL-2.0-or-late
-URL:            http://www.kbd-project.org/
+URL:            https://kbd-project.org/
+VCS:            git:https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git
 #!RemoteAsset
 Source0:        https://www.kernel.org/pub/linux/utils/%{name}/%{name}-%{version}.tar.xz
 Source1:        vlock.pamd
@@ -25,13 +26,11 @@ BuildOption(conf):  --prefix=%{_prefix}
 BuildOption(conf):  --datadir=%{kbd_datadir}
 BuildOption(conf):  --mandir=%{_mandir}
 BuildOption(conf):  --localedir=%{_datadir}/locale
-
 %if %{with nls}
 BuildOption(conf):  --enable-nls
 %else
 BuildOption(conf):  --disable-nls
 %endif
-
 BuildOption(conf):  --disable-tests
 BuildOption(build):  KEYCODES_PROGS=yes
 BuildOption(build):  RESIZECONS_PROGS=yes
@@ -40,12 +39,10 @@ BuildOption(install):  RESIZECONS_PROGS=yes
 
 BuildRequires:  bison
 BuildRequires:  flex
-
 %if %{with nls}
 BuildRequires:  gettext
 %endif
-
-BuildRequires:  pam-devel
+BuildRequires:  pkgconfig(pam)
 BuildRequires:  make
 BuildRequires:  automake
 

@@ -38,7 +38,7 @@ Details of the implementation: http://linux.thai.net/~thep/datrie/datrie.html
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 This package contains libraries and header files for

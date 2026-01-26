@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,14 +12,21 @@ Release:        %autorelease
 Summary:        Library for the user-space conntrack helper infrastructure
 License:        GPL-2.0-only
 URL:            http://www.netfilter.org/projects/libnetfilter_cthelper/index.html
+VCS:            git:https://git.netfilter.org/libnetfilter_cthelper
 #!RemoteAsset
 Source0:        http://www.netfilter.org/projects/libnetfilter_cthelper/files/%{name}-%{version}.tar.bz2
 BuildSystem:    autotools
 
-BuildOption(conf): --disable-static
+BuildOption(conf):  --disable-static
 
-BuildRequires:  gcc make autoconf automake libtool
-BuildRequires:  libmnl-devel pkgconfig linux-headers
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  pkgconfig(libmnl)
+BuildRequires:  pkgconfig
+BuildRequires:  linux-headers
 
 %description
 libnetfilter_cthelper is the userspace library that provides the programming
@@ -27,8 +35,8 @@ you can register, configure, enable and disable user-space helpers.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}
-Requires:       libmnl-devel
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       pkgconfig(libmnl)
 Requires:       linux-headers
 
 %description    devel

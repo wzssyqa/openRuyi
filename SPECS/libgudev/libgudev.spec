@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -13,18 +14,17 @@ Release:        %autorelease
 Summary:        GObject-based wrapper library for libudev
 License:        LGPL-2.1-or-later
 URL:            https://wiki.gnome.org/Projects/libgudev
+VCS:            git:https://gitlab.gnome.org/GNOME/libgudev.git
 #!RemoteAsset
 Source:         https://download.gnome.org/sources/libgudev/%{version}/libgudev-%{version}.tar.xz
 BuildSystem:    meson
 
 BuildOption(conf):  -Dvapi=disabled
-
 %if %{with doc}
 BuildOption(conf):  -Dgtk_doc=true
 %else
 BuildOption(conf):  -Dgtk_doc=false
 %endif
-
 %if %{with tests}
 BuildOption(conf):  -Dtests=enabled
 %else
@@ -33,17 +33,15 @@ BuildOption(conf):  -Dtests=disabled
 
 BuildRequires:  meson
 BuildRequires:  gcc
-BuildRequires:  glib-devel
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  libudev-devel
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig
-
 %if %{with doc}
 BuildRequires:  gtk-doc
 %endif
-
 %if %{with tests}
-BuildRequires:  umockdev-devel
+BuildRequires:  pkgconfig(umockdev-1.0)
 %endif
 
 %description

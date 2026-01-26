@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -10,16 +11,17 @@ Release:        %autorelease
 Summary:        SELinux binary policy manipulation library
 License:        LGPL-2.1-or-later
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
+VCS:            git:https://github.com/SELinuxProject/selinux
 #!RemoteAsset
 Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
 #!RemoteAsset
 Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
-BuildRequires:  flex
-BuildRequires:  pkgconfig
-BuildOption(install):  LIBDIR="%{_libdir}" SHLIBDIR="%{_libdir}"
 BuildSystem:    autotools
 
+BuildOption(install):  LIBDIR="%{_libdir}" SHLIBDIR="%{_libdir}"
 
+BuildRequires:  flex
+BuildRequires:  pkgconfig
 
 %description
 libsepol provides an API for the manipulation of SELinux binary
@@ -28,31 +30,31 @@ tools, as well as by programs like load_policy that need to perform
 specific transformations on binary policies such as customizing
 policy boolean settings.
 
-%package utils
+%package        utils
 Summary:        SELinux binary policy manipulation tools
 
-%description utils
+%description    utils
 libsepol provides an API for the manipulation of SELinux binary
 policies. It is used by checkpolicy (the policy compiler) and similar
 tools, as well as by programs like load_policy that need to perform
 specific transformations on binary policies such as customizing
 policy boolean settings.
 
-%package devel
+%package        devel
 Summary:        Development files for SELinux's binary policy manipulation library
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       glibc-devel
 
-%description devel
+%description    devel
 The libsepol-devel package contains the libraries and header files
 needed for developing applications that manipulate binary SELinux
 policies.
 
-%package static
+%package        static
 Summary:        Static archives for SELinux's binary policy manipulation library
-Requires:       libsepol-devel = %{version}
+Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
 
-%description static
+%description    static
 The libsepol-devel-static package contains the static libraries
 needed for developing applications that manipulate binary SELinux
 policies.

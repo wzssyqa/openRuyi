@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -15,8 +16,8 @@ URL:            https://github.com/jedisct1/libsodium
 Source:         https://download.libsodium.org/libsodium/releases/%{name}-%{version}.tar.gz
 BuildSystem:    autotools
 
-BuildOption(conf): --disable-static
-BuildOption(conf): --disable-silent-rules
+BuildOption(conf):  --disable-static
+BuildOption(conf):  --disable-silent-rules
 
 BuildRequires:  gcc
 
@@ -25,11 +26,11 @@ Sodium is a portable, cross-compilable, installable, packageable fork of NaCl,
 a new easy-to-use high-speed software library for network communication,
 encryption, decryption, signatures, etc.
 
-%package devel
+%package        devel
 Summary:        Development files for the libsodium crypto library
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description    devel
 This package contains all necessary include files and libraries needed
 to compile and develop applications that use libsodium.
 

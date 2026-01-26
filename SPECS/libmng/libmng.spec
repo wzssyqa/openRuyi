@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -10,7 +11,7 @@ Release:        %autorelease
 Summary:        Library for Multiple-image Network Graphics support
 License:        Zlib
 URL:            http://www.libmng.com/
-# No git repo.
+# VCS: No VCS link available
 #!RemoteAsset
 Source0:        https://sourceforge.net/projects/libmng/files/libmng-devel/%{version}/libmng-%{version}.tar.xz
 BuildSystem:    autotools
@@ -36,7 +37,7 @@ Graphics) and JNG (JPEG Network Graphics) formats.
 
 %package        devel
 Summary:        Development files for libmng
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       pkgconfig(zlib)
 Requires:       pkgconfig(libjpeg)
 

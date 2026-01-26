@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Yafen Fang <yafen@iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,11 +12,12 @@ Release:        %autorelease
 Summary:        Linux Kernel Stream Control Transmission Protocol Tools
 License:        GPL-2.0-or-later AND LGPL-2.0-only AND MIT
 URL:            https://github.com/sctp/lksctp-tools/wiki
+VCS:            git:https://github.com/sctp/lksctp-tools
 #!RemoteAsset
 Source0:        https://github.com/sctp/lksctp-tools/archive/v%{version}/%{name}-%{version}.tar.gz
-
 BuildSystem:    autotools
-BuildOption(conf): --disable-static
+
+BuildOption(conf):  --disable-static
 
 BuildRequires:  make
 BuildRequires:  gcc
@@ -33,11 +35,11 @@ versions 2.5.36 and following. For more information on LKSCTP see the
 package documentation README file, section titled "LKSCTP - Linux
 Kernel SCTP."
 
-%package devel
-Summary:    Development files for %{name}
-Requires:   %{name} = %{version}-%{release}
+%package        devel
+Summary:        Development files for %{name}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description    devel
 Development files for %{name} which include header files and dynamic
 libraries.
 

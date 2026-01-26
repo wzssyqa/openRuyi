@@ -32,8 +32,6 @@ BuildRequires:  tar
 BuildRequires:  perl
 BuildRequires:  gzip
 
-Provides:       bundled(gnulib)
-
 %description
 The libpaper package enables users to indicate their preferred paper
 size and specifies system-wide and per-user paper size catalogues, which can
@@ -41,20 +39,11 @@ also be used directly (see paperspecs(5)).
 
 %package        devel
 Summary:        Headers/Libraries for developing programs that use libpaper
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 This package contains headers and libraries that programmers will need
 to develop applications which use libpaper.
-
-%package     -n paper
-Summary:        Print paper size information
-Requires:       %{name} = %{version}-%{release}
-License:        GPL-3.0-or-later AND FSFAP AND GPL-2.0-only
-
-%description -n paper
-The paper(1) utility can be used to find the user's preferred
-default paper size and give information about known sizes.
 
 %prep -a
 cp %{SOURCE1} src/
@@ -79,19 +68,17 @@ install -m0644 paperconf.1.gz %{buildroot}%{_mandir}/man1/paperconf.1
 %doc ChangeLog README
 %license COPYING
 %config(noreplace) %{_sysconfdir}/paperspecs
-%{_libdir}/libpaper.so.2*
-
-%files devel
-%{_includedir}/paper.h
-%{_libdir}/libpaper.so
-
-%files -n paper
 %{_bindir}/paper
 %{_bindir}/paperconf
 %{_libexecdir}/localepaper
 %{_mandir}/man1/paper.*
 %{_mandir}/man1/paperconf.*
 %{_mandir}/man5/paperspecs.*
+%{_libdir}/libpaper.so.2*
+
+%files devel
+%{_includedir}/paper.h
+%{_libdir}/libpaper.so
 
 %changelog
 %{?autochangelog}

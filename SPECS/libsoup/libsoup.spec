@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -15,15 +16,15 @@ VCS:            git:https://gitlab.gnome.org/GNOME/libsoup
 Source:         https://download.gnome.org/sources/libsoup/3.6/libsoup-%{version}.tar.xz
 BuildSystem:    meson
 
-BuildOption(conf): -Ddocs=enabled
-BuildOption(conf): -Dautobahn=disabled
-BuildOption(conf): -Dsysprof=disabled
-BuildOption(conf): -Dntlm=disabled
+BuildOption(conf):  -Ddocs=enabled
+BuildOption(conf):  -Dautobahn=disabled
+BuildOption(conf):  -Dsysprof=disabled
+BuildOption(conf):  -Dntlm=disabled
 
 BuildRequires:  gcc
 BuildRequires:  gettext-devel
-BuildRequires:  gi-docgen >= 2021.1
-BuildRequires:  krb5-devel
+BuildRequires:  gi-docgen
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:  meson
 BuildRequires:  vala
 BuildRequires:  glib-networking >= 2.70.0
@@ -44,9 +45,9 @@ is designed to work well with GTK applications.
 
 %package        devel
 Summary:        Header files and documentation for the Soup library
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description devel
+%description    devel
 This package contains the header files, libraries, and developer documentation
 needed to develop applications that use the libsoup library.
 
@@ -56,6 +57,7 @@ install -m 644 -D tests/libsoup.supp %{buildroot}%{_datadir}/libsoup-3.0/libsoup
 # Avoid illegal package names
 rm -rf %{buildroot}%{_datadir}/locale/*@*
 rm -rf %{buildroot}%{_datadir}/locale/en_GB/LC_MESSAGES
+
 %find_lang libsoup-3.0 --generate-subpackages
 
 %files

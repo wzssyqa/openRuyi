@@ -1,17 +1,17 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Yafen Fang <yafen@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
+
 %define VER 2_1_2
 
 Name:           log4cplus
 Version:        2.1.2
 Release:        %autorelease
 Summary:        C++ logging library
-# Threadpool is Zlib
-# catch/* is BSL-1.0
-License:        (BSD-2-Clause OR Apache-2.0) AND Zlib AND BSL-1.0
+License:        Apache-2.0
 URL:            https://github.com/log4cplus/log4cplus
 #!RemoteAsset
 Source0:        https://github.com/log4cplus/log4cplus/releases/download/REL_%{VER}/%{name}-%{version}.tar.xz
@@ -31,7 +31,7 @@ configuration. It is modeled after the Java log4j API.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 This package provides headers and libraries needed to develop applications

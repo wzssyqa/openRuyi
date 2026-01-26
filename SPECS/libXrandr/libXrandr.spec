@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Dingli Zhang <dingli@iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,30 +12,30 @@ Release:        %autorelease
 Summary:        X.Org X11 libXrandr runtime library
 License:        MIT
 URL:            https://www.x.org
+VCS:            git:https://gitlab.freedesktop.org/xorg/lib/libxrandr.git
 #!RemoteAsset
-Source0:         https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.gz
-
+Source0:        https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.gz
 BuildSystem:    autotools
 
-BuildOption(conf): --disable-static
+BuildOption(conf):  --disable-static
 
-BuildRequires:  pkgconfig(xorg-macros) >= 1.12
-BuildRequires:  pkgconfig(xproto) >= 7.0.13
-BuildRequires:  pkgconfig(x11) >= 1.6.0
+BuildRequires:  pkgconfig(xorg-macros)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrender)
 
-Requires:       libX11 >= 1.6.0
+Requires:       libX11
 
 %description
 X.Org X11 libXrandr runtime library
 
-%package devel
+%package        devel
 Summary:        X.Org X11 libXrandr development package
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       pkgconfig
 
-%description devel
+%description    devel
 X.Org X11 libXrandr development package
 
 %files

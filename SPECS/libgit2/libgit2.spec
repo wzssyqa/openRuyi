@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,22 +12,30 @@ Release:        %autorelease
 Summary:        C implementation of the Git core methods as a library with a solid API
 License:        GPL-2.0-only WITH GCC-exception-2.0
 URL:            https://libgit2.org/
+VCS:            git:https://github.com/libgit2/libgit2
 #!RemoteAsset
 Source:         https://github.com/libgit2/libgit2/archive/refs/tags/v%{version}.tar.gz
 BuildSystem:    cmake
 
-BuildOption(conf): -DREGEX_BACKEND=pcre2
-BuildOption(conf): -DBUILD_CLI=OFF
-BuildOption(conf): -DUSE_HTTP_PARSER=llhttp
-BuildOption(conf): -DUSE_SHA1=HTTPS
-BuildOption(conf): -DUSE_HTTPS=OpenSSL
-BuildOption(conf): -DUSE_NTLMCLIENT=OFF
-BuildOption(conf): -DUSE_SSH=ON
+BuildOption(conf):  -DREGEX_BACKEND=pcre2
+BuildOption(conf):  -DBUILD_CLI=OFF
+BuildOption(conf):  -DUSE_HTTP_PARSER=llhttp
+BuildOption(conf):  -DUSE_SHA1=HTTPS
+BuildOption(conf):  -DUSE_HTTPS=OpenSSL
+BuildOption(conf):  -DUSE_NTLMCLIENT=OFF
+BuildOption(conf):  -DUSE_SSH=ON
 
-BuildRequires:  gcc cmake ninja
-BuildRequires:  krb5-devel libcurl-devel llhttp-devel
-BuildRequires:  libssh2-devel
-BuildRequires:  openssl-devel pcre2-devel python3 zlib-devel
+BuildRequires:  gcc
+BuildRequires:  cmake
+BuildRequires:  ninja
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libllhttp)
+BuildRequires:  pkgconfig(libssh2)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(libpcre2-posix)
+BuildRequires:  python3
+BuildRequires:  pkgconfig(zlib)
 
 %description
 libgit2 is a portable, pure C implementation of the Git core methods
@@ -34,7 +43,7 @@ provided as a re-entrant linkable library with a solid API.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 This package contains libraries, header files, and examples for

@@ -15,6 +15,7 @@ Release:        %autorelease
 Summary:        A library implementing the SSH protocol
 License:        LGPL-2.1-or-later
 URL:            http://www.libssh.org
+VCS:            git:git://git.libssh.org/projects/libssh.git
 #!RemoteAsset
 Source0:        https://www.libssh.org/files/0.11/%{name}-%{version}.tar.xz
 #!RemoteAsset
@@ -38,11 +39,11 @@ BuildOption(conf):  -DWITH_PKCS11_PROVIDER=ON
 %endif
 
 BuildRequires:  cmake
-BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 %if %{with gssapi}
-BuildRequires:  krb5-devel
+BuildRequires:  pkgconfig(krb5)
 %endif
 BuildRequires:  cmocka-cmake
 BuildRequires:  pam_wrapper
@@ -52,7 +53,7 @@ BuildRequires:  uid_wrapper
 BuildRequires:  priv_wrapper
 %if %{with pkcs11}
 BuildRequires:  pkcs11-provider
-BuildRequires:  p11-kit-devel
+BuildRequires:  pkgconfig(p11-kit-1)
 BuildRequires:  p11-kit-server
 BuildRequires:  opensc
 BuildRequires:  softhsm
@@ -61,9 +62,8 @@ BuildRequires:  gnutls
 
 Requires:       %{name}-config = %{version}-%{release}
 
-# Please Enable this back once we have crypto-policies
+# TODO: Should we need this? - 251
 #Recommends:     crypto-policies
-
 
 %description
 The ssh library was designed to be used by programmers needing a working SSH
@@ -73,20 +73,20 @@ files, use a secure and transparent tunnel for your remote programs. With its
 Secure FTP implementation, you can play with remote files easily, without
 third-party programs others than libcrypto (from openssl).
 
-%package devel
+%package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       cmake-filesystem
 
-%description devel
+%description    devel
 The %{name}-devel package contains libraries and header files for developing
 applications that use %{name}.
 
-%package config
+%package        config
 Summary:        Configuration files for %{name}
 BuildArch:      noarch
 
-%description config
+%description    config
 The %{name}-config package provides the default configuration files for %{name}.
 
 %install -a

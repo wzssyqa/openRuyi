@@ -4,6 +4,8 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
+%global  flags PREFIX=%{_prefix} LIBDIR=%{_libdir} MANDIR=%{_mandir} ETCDIR=%{_sysconfdir} EXLDFLAGS="$LDFLAGS" PROG_EXTRA=sensord BUILD_STATIC_LIB=0 SBINDIR=%{_sbindir} BINDIR=%{_bindir}
+
 %define _upstream_version 3-6-0
 %define _version %(echo %{_upstream_version} | tr '-' '.')
 
@@ -17,7 +19,7 @@ Summary:        Hardware monitoring tools
 # lib/* are LGPL-2.1-or-later.
 # The rest is GPL-2.0-or-later.
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND Linux-man-pages-copyleft-var AND Linux-man-pages-copyleft AND MIT
-URL:            http://github.com/lm-sensors/lm-sensors
+URL:            https://github.com/lm-sensors/lm-sensors
 #!RemoteAsset
 Source0:        https://github.com/lm-sensors/lm-sensors/archive/V%{_upstream_version}/lm-sensors-%{_upstream_version}.tar.gz
 Source1:        lm_sensors.sysconfig
@@ -29,23 +31,24 @@ Source5:        sensord.service
 Source6:        sensord-service-wrapper
 Source7:        lm_sensors.service
 Source8:        lm_sensors-wrapper
-
 BuildSystem:    autotools
+
 BuildRequires:  linux-headers
 BuildRequires:  bison
-BuildRequires:  libsysfs-devel
+BuildRequires:  pkgconfig(libsysfs)
 BuildRequires:  flex
 BuildRequires:  gawk
 BuildRequires:  perl-devel
 BuildRequires:  perl-macros
-BuildRequires:  rrdtool-devel
+BuildRequires:  pkgconfig(librrd)
 BuildRequires:  gcc
+
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 Requires:       kmod
 Requires:       systemd-units
-%global  flags PREFIX=%{_prefix} LIBDIR=%{_libdir} MANDIR=%{_mandir} ETCDIR=%{_sysconfdir} EXLDFLAGS="$LDFLAGS" PROG_EXTRA=sensord BUILD_STATIC_LIB=0 SBINDIR=%{_sbindir} BINDIR=%{_bindir}
+
 BuildOption(build):  %flags user
-BuildOption(install): %flags user_install
+BuildOption(install):  %flags user_install
 
 %patchlist
 # Change PIDFile path from /var/run to /run
@@ -72,8 +75,6 @@ Core libraries for lm_sensors applications.
 %package        devel
 Summary:        Development files for programs which will use lm_sensors
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
-# One manual page is licensed Linux-man-pages-copyleft (lib/libsensors.3).
-# The rest is LGPLv2+.
 License:        LGPL-2.1-or-later AND Linux-man-pages-copyleft
 
 %description    devel
@@ -84,8 +85,6 @@ when building applications that make use of sensor data.
 Summary:        Daemon that periodically logs sensor readings
 Requires:       %{name} = %{version}-%{release}
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
-# One man page is licensed Linux-man-pages-copyleft (prog/sensord/sensord.8).
-# Files from dist-git are licensed MIT according to the FPCA. The rest is GPLv2+.
 License:        GPL-2.0-or-later AND Linux-man-pages-copyleft AND MIT
 
 %description    sensord
@@ -138,7 +137,6 @@ install -pm 755 %{SOURCE6} %{buildroot}%{_libexecdir}/%{name}/sensord-service-wr
 # no tests
 %check
 
-# ===== main =====
 %post
 %systemd_post lm_sensors.service
 %preun
@@ -146,7 +144,6 @@ install -pm 755 %{SOURCE6} %{buildroot}%{_libexecdir}/%{name}/sensord-service-wr
 %postun
 %systemd_postun_with_restart lm_sensors.service
 
-# ==== sensord ===
 %post sensord
 %systemd_post sensord.service
 %preun sensord

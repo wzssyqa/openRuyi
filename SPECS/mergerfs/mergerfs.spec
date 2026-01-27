@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Xuhai Chang <xuhai.oerv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -12,16 +13,19 @@ License:        MIT
 URL:            https://github.com/trapexit/mergerfs
 #!RemoteAsset
 Source0:        https://github.com/trapexit/mergerfs/releases/download/%{version}/%{name}-%{version}.tar.gz
-Patch0:         0001-no_chown_during_install.patch
 BuildSystem:    autotools
+
+Patch0:         0001-no_chown_during_install.patch
+
+BuildOption(build):  LIBDIR=%{_libdir}
+BuildOption(install):  PREFIX=%{_prefix}
+BuildOption(install):  SBINDIR=%{_sbindir}
+BuildOption(install):  LIBDIR=%{_libdir}
+
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(libattr)
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  libtool
-BuildOption(install): PREFIX=%{_prefix}
-BuildOption(install): SBINDIR=%{_sbindir}
-BuildOption(build): LIBDIR=%{_libdir}
-BuildOption(install): LIBDIR=%{_libdir}
 
 %description
 mergerfs is similar to mhddfs, unionfs, and aufs. Like mhddfs in that it also

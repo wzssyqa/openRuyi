@@ -15,14 +15,15 @@ URL:            http://openjade.sourceforge.net/
 #!RemoteAsset
 Source0:        http://download.sourceforge.net/openjade/OpenSP-%{version}.tar.gz
 BuildSystem:    autotools
+
 # configure: error: unrecognized option: --docdir=/usr/share/doc/opensp
 # So we need to use this
-BuildOption(conf): --disable-doc-build
-BuildOption(conf): --disable-dependency-tracking
-BuildOption(conf): --disable-static
+BuildOption(conf):  --disable-doc-build
+BuildOption(conf):  --disable-dependency-tracking
+BuildOption(conf):  --disable-static
 BuildOption(conf):  --enable-http
-BuildOption(conf): --enable-default-catalog=/etc/sgml/catalog
-BuildOption(conf): --enable-default-search-path=/usr/share/sgml:/usr/share/xml
+BuildOption(conf):  --enable-default-catalog=/etc/sgml/catalog
+BuildOption(conf):  --enable-default-search-path=/usr/share/sgml:/usr/share/xml
 
 BuildRequires:  make
 BuildRequires:  automake
@@ -30,7 +31,6 @@ BuildRequires:  autoconf
 BuildRequires:  libtool
 
 Requires:       sgml-common
-Provides:       bundled(gettext) = 0.14.5
 
 %description
 OpenSP is an implementation of the ISO/IEC 8879:1986 standard SGML

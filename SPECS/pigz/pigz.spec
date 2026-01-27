@@ -1,21 +1,25 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
 %global _test_target test
-Name:    pigz
-Version: 2.8
-Release: %autorelease
-License: Zlib
-Summary: Parallel implementation of gzip
-URL:     https://zlib.net/pigz/
+
+Name:           pigz
+Version:        2.8
+Release:        %autorelease
+License:        Zlib
+Summary:        Parallel implementation of gzip
+URL:            https://zlib.net/pigz/
+VCS:            git:https://github.com/madler/pigz.git
 #!RemoteAsset
-Source0: https://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
-BuildSystem: autotools
-BuildRequires: which
-BuildRequires: zlib-devel
+Source0:        https://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
+BuildSystem:    autotools
+
+BuildRequires:  which
+BuildRequires:  pkgconfig(zlib)
 
 %description
 pigz, which stands for parallel implementation of gzip,

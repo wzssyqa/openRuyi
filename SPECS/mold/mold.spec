@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Mahno <bestwow2014@gmail.com>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -13,24 +14,26 @@ License:        MIT AND (Apache-2.0 OR MIT)
 URL:            https://github.com/rui314/mold
 #!RemoteAsset
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildSystem:    cmake
+
 # Allow building against the system-provided `xxhash.h`
 Patch0:         0001-Use-system-compatible-include-path-for-xxhash.h.patch
-BuildSystem:    cmake
+
 # use bundled mimalloc
 # BuildOption(conf):  -DMOLD_USE_SYSTEM_MIMALLOC=ON
 
 # use bundled blake3 to decrease dependency
-# BuildRequires:  blake3-devel
+# BuildRequires:  pkgconfig(tbb)
 BuildRequires:  cmake
-BuildRequires:  gcc gcc-c++
-# BuildRequires:  mimalloc-devel
-BuildRequires:  xxhash-devel zlib-devel zstd-devel
-Provides:       bundled(tbb) = 2022.1
-Provides:       bundled(blake3)
-Provides:       bundled(mimalloc)
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+# BuildRequires:  pkgconfig(mimalloc)
+BuildRequires:  pkgconfig(libxxhash)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(libzstd)
 
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description
 mold is a faster drop-in replacement for existing Unix linkers.

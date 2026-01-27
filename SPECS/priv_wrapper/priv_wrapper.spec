@@ -11,6 +11,7 @@ Release:        %autorelease
 Summary:        A library to disable resource limits and other privilege dropping
 License:        GPL-3.0-or-later
 URL:            http://cwrap.org/
+VCS:            git:https://git.samba.org/priv_wrapper.git
 #!RemoteAsset
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 #!RemoteAsset

@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2026 openRuyi Project Contributors
 # SPDX-FileContributor: Xuhai Chang <xuhai.oerv@isrc.iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -14,24 +15,25 @@ URL:            https://github.com/containers/netavark
 Source0:        https://github.com/containers/netavark/archive/v%{version}.tar.gz
 #!RemoteAsset
 Source1:        https://github.com/containers/netavark/releases/download/v%{version}/netavark-v%{version}-vendor.tar.gz
-# pseudo build system, for ease of use
+# TODO: pseudo build system, for ease of use
 # will be replaced by build system cargo
 BuildSystem:    autotools
 
 BuildOption(build):  NETAVARK_DEFAULT_FW=nftables
 BuildOption(build):  CARGO="cargo --offline"
 BuildOption(build):  CI=1
-BuildOption(install): DESTDIR=%{buildroot}
-BuildOption(install): PREFIX=%{_prefix}
+BuildOption(install):  DESTDIR=%{buildroot}
+BuildOption(install):  PREFIX=%{_prefix}
 
 BuildRequires:  cargo
 BuildRequires:  rust
 BuildRequires:  make
 BuildRequires:  go-md2man
 # needs protoc binary, not protobuf library
-BuildRequires:  protobuf-devel
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  systemd
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(systemd)
+
 Requires:       nftables
 Requires:       aardvark-dns
 

@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025, 2026 openRuyi Project Contributors
 # SPDX-FileContributor: Jingwiw <wangjingwei@iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -18,15 +19,16 @@ Release:        %autorelease
 Summary:        The GNU macro processor
 License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/m4/
+VCS:            git:http://git.savannah.gnu.org/r/m4.git
 #!RemoteAsset
-Source0:         https://ftpmirror.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
-
+Source0:        https://ftpmirror.gnu.org/gnu/m4/m4-%{version}.tar.xz
 BuildSystem:    autotools
-BuildOption(conf): --without-included-regex
+
+BuildOption(conf):  --without-included-regex
 %if %{with nls}
-BuildOption(conf): --enable-nls
+BuildOption(conf):  --enable-nls
 %else
-BuildOption(conf): --disable-nls
+BuildOption(conf):  --disable-nls
 %endif
 
 BuildRequires:  gcc

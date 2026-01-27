@@ -3,6 +3,7 @@
 # SPDX-FileContributor: Xuhai Chang <xuhai.oerv@isrc.iscas.ac.cn>
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -12,8 +13,11 @@ Release:        %autorelease
 Summary:        Terminal control library
 License:        MIT
 URL:            https://invisible-island.net/ncurses/ncurses.html
+VCS:            git:git://ncurses.scripts.mit.edu/ncurses.git
 #!RemoteAsset
 Source:         https://invisible-mirror.net/archives/ncurses/ncurses-%{version}.tar.gz
+BuildSystem:    autotools
+
 # Patch for removing hardcoded path
 Patch0:         0001-ncurses-config.patch
 # Patch for cleaning up and simplying the linking process
@@ -23,10 +27,9 @@ Patch2:         0003-ncurses-urxvt.patch
 # Patch for fixing backspace key configuration in rxvt and screen terminals
 Patch3:         0004-ncurses-kbs.patch
 
-BuildSystem:    autotools
-
 BuildRequires:  make
-BuildRequires:  gcc gcc-c++
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  gpm-devel
 BuildRequires:  pkgconfig
 
@@ -39,7 +42,7 @@ enhancements over BSD curses.
 
 %package        devel
 Summary:        Development files for the ncurses library
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       pkgconfig
 
 %description    devel

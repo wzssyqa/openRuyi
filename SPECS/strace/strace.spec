@@ -11,6 +11,7 @@ Release:        %autorelease
 Summary:        Tracks and displays system calls associated with a running process
 License:        LGPL-2.1-or-later
 URL:            http://strace.io/
+VCS:            git:https://github.com/strace/strace.git
 #!RemoteAsset:  sha256:0ad5dcba973a69e779650ef1cb335b12ee60716fc7326609895bd33e6d2a7325
 Source0:        https://strace.io/files/%{version}/strace-%{version}.tar.xz
 BuildSystem:    autotools
@@ -18,7 +19,7 @@ BuildSystem:    autotools
 BuildRequires:  xz
 BuildRequires:  gzip
 BuildRequires:  make
-BuildRequires:  libelf-devel
+BuildRequires:  pkgconfig(libelf)
 BuildRequires:  binutils-devel
 BuildRequires:  pkgconfig(libselinux)
 

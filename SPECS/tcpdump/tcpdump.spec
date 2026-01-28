@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,17 +12,24 @@ Release:        %autorelease
 Summary:        A network traffic monitoring tool
 License:        BSD-3-Clause AND ISC
 URL:            https://www.tcpdump.org
+VCS:            git:https://github.com/the-tcpdump-group/tcpdump.git
 #!RemoteAsset
 Source0:        https://www.tcpdump.org/release/tcpdump-%{version}.tar.xz
 Source1:        tcpdump-sysusers.conf
 BuildSystem:    autotools
 
-BuildOption(conf): --with-crypto
-BuildOption(conf): --with-user=tcpdump
-BuildOption(conf): --without-smi
-BuildOption(build): CFLAGS="%{optflags} -fno-strict-aliasing -DGUESS_TSO"
+BuildOption(conf):  --with-crypto
+BuildOption(conf):  --with-user=tcpdump
+BuildOption(conf):  --without-smi
+BuildOption(build):  CFLAGS="%{optflags} -fno-strict-aliasing -DGUESS_TSO"
 
-BuildRequires: make automake autoconf openssl-devel libpcap-devel gcc systemd-rpm-macros
+BuildRequires:  make
+BuildRequires:  automake
+BuildRequires:  autoconf
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(libpcap)
+BuildRequires:  gcc
+BuildRequires:  systemd-rpm-macros
 
 %description
 Tcpdump is a command-line tool for monitoring network traffic. This package

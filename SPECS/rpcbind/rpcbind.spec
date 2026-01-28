@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -15,19 +16,20 @@ Source0:        https://downloads.sourceforge.net/sourceforge/rpcbind/rpcbind-%{
 Source1:        rpc-user.sysusers
 BuildSystem:    autotools
 
-BuildOption(conf): --disable-libwrap
-BuildOption(conf): --enable-warmstarts
-BuildOption(conf): --enable-debug
-BuildOption(conf): --with-statedir=%{_rundir}/%{name}
-BuildOption(conf): --with-rpcuser=rpc
-BuildOption(conf): --with-systemdsystemunitdir=%{_unitdir}
-BuildOption(conf): --with-nss-modules="files usrfiles"
+BuildOption(conf):  --disable-libwrap
+BuildOption(conf):  --enable-warmstarts
+BuildOption(conf):  --enable-debug
+BuildOption(conf):  --with-statedir=%{_rundir}/%{name}
+BuildOption(conf):  --with-rpcuser=rpc
+BuildOption(conf):  --with-systemdsystemunitdir=%{_unitdir}
+BuildOption(conf):  --with-nss-modules="files usrfiles"
 
-BuildRequires:  libtirpc-devel
+BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  autoconf automake
+BuildRequires:  autoconf
+BuildRequires:  automake
 %{?systemd_ordering}
 
 %description

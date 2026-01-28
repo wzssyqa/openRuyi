@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025, 2026 openRuyi Project Contributors
 # SPDX-FileContributor: CHEN Xuan <chenxuan@iscas.ac.cn>
 # SPDX-FileContributor: Yifan Xu <xuyifan@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -24,6 +25,13 @@
 %global amd_device_libs_prefix lib/clang/%{llvm_maj_ver}
 
 %global toolchain clang
+
+%ifarch x86_64
+%global targets_to_build "X86;AMDGPU"
+%endif
+%ifarch riscv64
+%global targets_to_build "RISCV;AMDGPU"
+%endif
 
 # All the tests are not enabled both on fedora and debian
 # https://salsa.debian.org/rocm-team/rocm-llvm/-/blob/debian/unstable/debian/rules
@@ -66,13 +74,6 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rocm-cmake >= %{rocm_release}
-
-%ifarch x86_64
-%global targets_to_build "X86;AMDGPU"
-%endif
-%ifarch riscv64
-%global targets_to_build "RISCV;AMDGPU"
-%endif
 
 %description
 %{summary}
@@ -262,27 +263,27 @@ rm -f %{buildroot}%{_datadir}/doc/hipcc/README.md
 %files macros
 %{_rpmmacrodir}/macros.rocmcompiler
 
-%files   -n rocm-device-libs
+%files -n rocm-device-libs
 %doc        amd/device-libs/README.md amd/device-libs/doc/*.md
 %license    amd/device-libs/LICENSE.TXT
 %dir        %{_libdir}/cmake/AMDDeviceLibs
 %{_libdir}/cmake/AMDDeviceLibs/*.cmake
 %{_prefix}/%{amd_device_libs_prefix}/amdgcn
 
-%files   -n rocm-comgr
+%files -n rocm-comgr
 %doc        amd/comgr/README.md
 %license    amd/comgr/LICENSE.txt
 %license    amd/comgr/NOTICES.txt
 %{_libdir}/libamd_comgr.so.*
 
-%files   -n rocm-comgr-devel
+%files -n rocm-comgr-devel
 %dir        %{_includedir}/amd_comgr
 %dir        %{_libdir}/cmake/amd_comgr
 %{_includedir}/amd_comgr/amd_comgr.h
 %{_libdir}/libamd_comgr.so
 %{_libdir}/cmake/amd_comgr/*.cmake
 
-%files   -n hipcc
+%files -n hipcc
 %doc        amd/hipcc/README.md
 %license    amd/hipcc/LICENSE.txt
 %license    amd/hipcc/README.md

@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -14,7 +15,8 @@ VCS:            git:https://gitlab.freedesktop.org/xdg/xdg-utils
 #!RemoteAsset
 Source:         https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v%{version}/xdg-utils-v%{version}.tar.gz
 BuildSystem:    autotools
-Patch:          0001-disable-docs.patch
+
+Patch0:         0001-disable-docs.patch
 
 BuildRequires:  gawk
 BuildRequires:  make

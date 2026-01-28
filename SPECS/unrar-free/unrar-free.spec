@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -19,7 +20,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  make
-BuildRequires:  libarchive-devel
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  libtool
 
 %description
@@ -27,9 +28,9 @@ unrar-free is a free software version of the non-free unrar utility. This
 program is a simple command-line front-end to libarchive, and can list and
 extract RAR archives and other formats supported by libarchive.
 
-%package -n     unrar
+%package     -n unrar
 Summary:        Wrapper package for unrar-free
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description -n unrar
 This package provides a compatibility symlink to use unrar-free as /usr/bin/unrar.

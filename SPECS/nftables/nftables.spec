@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
 # SPDX-FileContributor: yyjeqhc <1772413353@qq.com>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -11,6 +12,7 @@ Release:        %autorelease
 Summary:        Netfilter Tables userspace utilities
 License:        GPL-2.0-only
 URL:            https://netfilter.org/projects/nftables/
+VCS:            git:https://git.netfilter.org/nftables
 #!RemoteAsset
 Source0:        https://netfilter.org/projects/nftables/files/nftables-%{version}.tar.xz
 Source1:        nftables.service
@@ -20,18 +22,30 @@ Source4:        router.nft
 Source5:        nat.nft
 BuildSystem:    autotools
 
-BuildOption(conf): --with-xtables
-BuildOption(conf): --with-json
-BuildOption(conf): --disable-manpages
+BuildOption(conf):  --with-xtables
+BuildOption(conf):  --with-json
+BuildOption(conf):  --disable-manpages
 
-BuildRequires:  flex bison gmp-devel jansson-devel python3-devel readline-devel
-BuildRequires:  libedit-devel python3-setuptools make gcc python3-pip
+BuildRequires:  flex
+BuildRequires:  bison
+BuildRequires:  pkgconfig(gmp)
+BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(readline)
+BuildRequires:  pkgconfig(libedit)
+BuildRequires:  python3-setuptools
+BuildRequires:  make
+BuildRequires:  gcc
+BuildRequires:  python3-pip
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4
 BuildRequires:  pkgconfig(libnftnl) >= 1.3.0
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
-BuildRequires:  systemd-rpm-macros autoconf automake libtool
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 
-Requires:         %{name}-services = %{version}
+Requires:       %{name}-services = %{version}-%{release}
 %systemd_requires
 
 %description
@@ -39,23 +53,26 @@ Netfilter Tables userspace utilities.
 
 %package        devel
 Summary:        Development library for nftables / libnftables
-Requires:       %{name} = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       pkgconfig
 
 %description    devel
 Headers and other development files for the libnftables library.
 
-%package -n     python3-nftables
+%package     -n python-nftables
 Summary:        Python module providing an interface to libnftables
-Requires:       %{name} = %{version}
-%description -n python3-nftables
+Provides:       python3-nftables
+%python_provide python3-nftables
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description -n python-nftables
 The nftables python module provides an interface to libnftables via ctypes.
 
-%package          services
-Summary:          Systemd service for nftables
-Requires:         %{name} = %{version}
+%package        services
+Summary:        Systemd service for nftables
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description  services
+%description    services
 Systemd service for managing an nftables-based firewall.
 
 %conf -p
@@ -102,7 +119,7 @@ cd py
 %{_includedir}/nftables/libnftables.h
 %{_mandir}/man3/libnftables.3*
 
-%files -n python3-nftables -f %{pyproject_files}
+%files -n python-nftables -f %{pyproject_files}
 
 %files services
 %config(noreplace) %{_sysconfdir}/nftables/

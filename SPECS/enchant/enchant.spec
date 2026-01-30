@@ -47,7 +47,7 @@ with different spell checking libraries.
 %package        devel
 Summary:        Development files for the Enchant spell checking library
 Requires:       pkgconfig(glib-2.0)
-Requires:       enchant = %{version}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       libstdc++-devel
 
 %description    devel

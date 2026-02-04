@@ -14,8 +14,9 @@ Release:        %autorelease
 Summary:        Ubiquitous config.guess and config.sub scripts
 License:        GPL-2.0-or-later
 URL:            https://savannah.gnu.org/projects/config
-#!RemoteAsset
-Source0:        https://git.savannah.gnu.org/cgit/config.git/snapshot/config-%{commit}.tar.gz
+#!RemoteAsset:  git+https://git.savannah.gnu.org/git/config.git#%{commit}
+#!CreateArchive
+Source0:        config-%{commit}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  help2man

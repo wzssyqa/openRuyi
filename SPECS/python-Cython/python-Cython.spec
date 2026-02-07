@@ -10,16 +10,18 @@
 %bcond cython_compile 1
 
 Name:           python-Cython
-Version:        3.1.3
+Version:        3.2.4
 Release:        %autorelease
 Summary:        Language for writing Python extension modules
 License:        Apache-2.0
 URL:            http://www.cython.org
-#!RemoteAsset
+#!RemoteAsset:  sha256:9631e586c49b9d3f72c3962c376119479a6a98e3c0e3c14d5218e199ef563b18
 Source:         https://github.com/cython/cython/archive/%{version}/Cython-%{version}.tar.gz
 
-BuildRequires:  python3-devel
-BuildRequires:  expat
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python3dist(pip)
+BuildRequires:  python3dist(setuptools)
 
 %if %{with cython_compile}
 BuildRequires:  gcc

@@ -9,7 +9,7 @@
 # NOTE: When updating this package, update SELinux first.
 
 Name:           policycoreutils
-Version:        3.8
+Version:        3.10
 Release:        %autorelease
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
@@ -149,6 +149,7 @@ mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+export PYTHON_SETUP_ARGS="$PYTHON_SETUP_ARGS --no-build-isolation"
 
 %install -a
 # dbus

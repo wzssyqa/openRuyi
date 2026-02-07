@@ -4,10 +4,10 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
-%define libsepol_ver 3.9
+%define libsepol_ver 3.10
 
 Name:           libselinux
-Version:        3.9
+Version:        3.10
 Release:        %autorelease
 Summary:        SELinux runtime library and utilities
 License:        LicenseRef-openRuyi-Public-Domain

@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: MulanPSL-2.0
 
 Name:           libsepol
-Version:        3.9
+Version:        3.10
 Release:        %autorelease
 Summary:        SELinux binary policy manipulation library
 License:        LGPL-2.1-or-later

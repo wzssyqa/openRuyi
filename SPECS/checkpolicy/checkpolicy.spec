@@ -8,7 +8,7 @@
 %global _test_target test
 
 Name:           checkpolicy
-Version:        3.9
+Version:        3.10
 Release:        %autorelease
 Summary:        SELinux policy compiler
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

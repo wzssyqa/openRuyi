@@ -9,7 +9,7 @@
 %global _test_target test
 
 Name:           libsemanage
-Version:        3.9
+Version:        3.10
 Release:        %autorelease
 Summary:        SELinux policy management library and utilities
 License:        LGPL-2.1-or-later

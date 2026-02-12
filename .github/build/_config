@@ -26,7 +26,7 @@ Keep: setup systemd
 Preinstall: systemd-sysusers
 Preinstall: setup
 Preinstall: gcc gcc-c++ expat ncurses filesystem popt
-Preinstall: acl pam librpmbuild10 elfutils libxml2 gawk attr
+Preinstall: acl pam elfutils libxml2 gawk attr
 Preinstall: linux-headers
 Preinstall: audit
 Preinstall: rpm-build file rpm glibc libxml2 libeconf

@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2025 Institute of Software, Chinese Academy of Sciences (ISCAS)
 # SPDX-FileCopyrightText: (C) 2025 openRuyi Project Contributors
 # SPDX-FileContributor: Zheng Junjie <zhengjunjie@iscas.ac.cn>
+# SPDX-FileContributor: misaka00251 <liuxin@iscas.ac.cn>
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
@@ -10,18 +11,23 @@ Release:        %autorelease
 Summary:        A GNU Tool for Automatically Configuring Source Code
 License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/autoconf
+VCS:            git:https://git.savannah.gnu.org/git/autoconf.git
 #!RemoteAsset
 Source0:        https://ftpmirror.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz
 #!RemoteAsset
 Source1:        https://ftpmirror.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz.sig
+BuildArch:      noarch
+BuildSystem:    autotools
+
 Patch0:         autoreconf-ltdl.diff
+
 BuildRequires:  help2man
 BuildRequires:  m4 >= 1.4.16
-BuildArch:      noarch
+BuildRequires:  perl >= 5.10
+
 Requires:       m4 >= 1.4.16
 Requires:       perl >= 5.10
-BuildRequires:  perl >= 5.10
-BuildSystem:    autotools
+
 %description
 GNU Autoconf is a tool for configuring source code and makefiles. Using
 autoconf, programmers can create portable and configurable packages,

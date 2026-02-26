@@ -9,7 +9,7 @@
 %define real_version 6.10.1
 %define short_version 6.10
 
-Name:           qt6-datavis3d
+Name:           qt6-qtdatavis3d
 Version:        6.10.1
 Release:        %autorelease
 Summary:        Qt6 - Qt Data Visualization component

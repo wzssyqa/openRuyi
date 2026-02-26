@@ -9,7 +9,7 @@
 %define real_version 6.10.1
 %define short_version 6.10
 
-Name:           qt6-quick3dphysics
+Name:           qt6-qtquick3dphysics
 Version:        6.10.1
 Release:        %autorelease
 Summary:        Qt6 - Quick3D Physics Libraries and utilities

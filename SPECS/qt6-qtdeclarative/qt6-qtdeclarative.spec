@@ -9,7 +9,7 @@
 %define real_version 6.10.1
 %define short_version 6.10
 
-Name:           qt6-declarative
+Name:           qt6-qtdeclarative
 Version:        6.10.1
 Release:        %autorelease
 Summary:        Qt6 - QtDeclarative component

@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  qt6-base-static >= %{version}
 BuildRequires:  qt6-base-private-devel
 BuildRequires:  pkgconfig(Qt6Quick)
-BuildRequires:  qt6-declarative-static
+BuildRequires:  qt6-qtdeclarative-static
 BuildRequires:  pkgconfig(Qt6QuickTimeline)
 BuildRequires:  pkgconfig(Qt6ShaderTools)
 %if %{with system_assimp}

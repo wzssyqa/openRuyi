@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(Qt6Core) >= %{version}
 BuildRequires:  qt6-base-private-devel
 BuildRequires:  qt6-base-static >= %{version}
 BuildRequires:  pkgconfig(Qt6Quick) >= %{version}
-BuildRequires:  qt6-declarative-static >= %{version}
+BuildRequires:  qt6-qtdeclarative-static >= %{version}
 BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
 BuildRequires:  libzstd-devel

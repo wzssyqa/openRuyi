@@ -32,7 +32,7 @@ BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ShaderTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
-Requires:       qt6-declarative >= %{qt6_version}
+Requires:       qt6-qtdeclarative >= %{qt6_version}
 Requires:       qt6-qt5compat >= %{qt6_version}
 BuildRequires:  qt6-qttools
 BuildRequires:  qt6-doctools

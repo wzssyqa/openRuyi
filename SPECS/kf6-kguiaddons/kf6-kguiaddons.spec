@@ -25,7 +25,7 @@ Source:         https://download.kde.org/stable/frameworks/6.22/%{rname}-%{versi
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-base-private-devel >= %{qt6_version}
+BuildRequires:  qt6-qtbase-private-devel >= %{qt6_version}
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}

@@ -33,7 +33,7 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
-BuildRequires:  qt6-base-private-devel >= %{qt6_version}
+BuildRequires:  qt6-qtbase-private-devel >= %{qt6_version}
 
 %description
 KAuth is a framework to let applications perform actions as a privileged user.

@@ -54,8 +54,8 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  boost-devel
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
-BuildRequires:  qt6-base-gui
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-gui
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt6Test)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6Xml)

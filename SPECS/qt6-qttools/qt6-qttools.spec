@@ -36,8 +36,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  qt6-macros
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(Qt6Core) >= %{version}
-BuildRequires:  qt6-base-private-devel
-BuildRequires:  qt6-base-static >= %{version}
+BuildRequires:  qt6-qtbase-private-devel
+BuildRequires:  qt6-qtbase-static >= %{version}
 BuildRequires:  pkgconfig(Qt6Quick) >= %{version}
 BuildRequires:  qt6-qtdeclarative-static >= %{version}
 BuildRequires:  clang-devel

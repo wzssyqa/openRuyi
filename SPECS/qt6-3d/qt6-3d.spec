@@ -39,8 +39,8 @@ BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6OpenGL)
-BuildRequires:  qt6-base-static >= %{version}
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-static >= %{version}
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt6Quick) >= %{version}
 BuildRequires:  pkgconfig(Qt6ShaderTools) >= %{version}
 BuildRequires:  qt6-qtimageformats >= %{version}

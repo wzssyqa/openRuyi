@@ -6,17 +6,16 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
+%define qt_module qtbase
 %define real_version 6.10.1
 %define short_version 6.10
-%define tar_name qtbase-everywhere-src
-%define tar_suffix %{nil}
 
 %bcond xcb 1
 %bcond mysql 0
 %bcond postgresql 0
 %bcond tests 0
 
-Name:           qt6-base
+Name:           qt6-qtbase
 Version:        6.10.1
 Release:        %autorelease
 Summary:        Qt 6 core components
@@ -24,7 +23,7 @@ License:        LGPL-3.0-only OR GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
 VCS:            git:https://code.qt.io/qt/qtbase.git
 #!RemoteAsset
-Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}/submodules/%{qt_module}-everywhere-src-%{real_version}.tar.xz
 Source1:        macros.qt6-qtbase
 BuildSystem:    cmake
 

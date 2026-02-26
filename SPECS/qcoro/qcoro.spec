@@ -39,7 +39,7 @@ BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-private-devel
 
 %description
 The QCoro library provides set of tools to make use of the C++20 coroutines
@@ -48,7 +48,7 @@ in connection with certain asynchronous Qt actions.
 %package        devel
 Summary:        Development files for QCoro (Qt 6 version)
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       qt6-base-devel
+Requires:       qt6-qtbase-devel
 
 %description    devel
 Development files for QCoro (Qt 6).

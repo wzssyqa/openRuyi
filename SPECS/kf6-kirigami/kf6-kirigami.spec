@@ -21,7 +21,7 @@ VCS:            git:https://invent.kde.org/frameworks/kirigami
 Source:         https://download.kde.org/stable/frameworks/6.22/%{rname}-%{version}.tar.xz
 
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
-BuildRequires:  qt6-base-private-devel >= %{qt6_version}
+BuildRequires:  qt6-qtbase-private-devel >= %{qt6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}

@@ -20,7 +20,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(packagekit-glib2)
 BuildRequires:  qt6-macros
-BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-qtbase-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  pkgconfig

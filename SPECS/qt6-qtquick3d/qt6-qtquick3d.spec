@@ -42,8 +42,8 @@ BuildRequires:  qt6-macros
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
-BuildRequires:  qt6-base-static >= %{version}
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-static >= %{version}
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt6Quick)
 BuildRequires:  qt6-qtdeclarative-static
 BuildRequires:  pkgconfig(Qt6QuickTimeline)

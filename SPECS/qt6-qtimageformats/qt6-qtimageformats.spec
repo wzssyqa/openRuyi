@@ -24,7 +24,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  qt6-macros
 BuildRequires:  pkgconfig(Qt6Gui)
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(jasper)
 BuildRequires:  pkgconfig(libmng)

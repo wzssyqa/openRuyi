@@ -29,7 +29,7 @@ BuildRequires:  qt6-macros
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt6Quick)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
 BuildRequires:  pkgconfig(openssl)

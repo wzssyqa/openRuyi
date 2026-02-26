@@ -42,7 +42,7 @@ and handling authentication on behalf of applications.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       qt6-base-devel
+Requires:       qt6-qtbase-devel
 
 %description    devel
 The %{name}-devel package contains libraries and header files for

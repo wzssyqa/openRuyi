@@ -24,7 +24,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  attr-devel
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-base-private-devel >= %{qt6_version}
+BuildRequires:  qt6-qtbase-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Archive) >= %{_kf6_version}
 BuildRequires:  cmake(KF6Auth) >= %{_kf6_version}
 BuildRequires:  cmake(KF6Bookmarks) >= %{_kf6_version}

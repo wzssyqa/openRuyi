@@ -29,7 +29,7 @@ BuildRequires:  graphviz
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig
 BuildRequires:  kf6-extra-cmake-modules >= 6.22.0
-BuildRequires:  qt6-base-private-devel >= 6.8.0
+BuildRequires:  qt6-qtbase-private-devel >= 6.8.0
 BuildRequires:  cmake(Qt6GuiPrivate)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  qt6-qttools

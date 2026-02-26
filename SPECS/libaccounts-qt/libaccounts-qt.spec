@@ -32,7 +32,7 @@ Accounts framework Qt6 bindings.
 %package        devel
 Summary:        Development files for libaccounts-qt6
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       qt6-base-devel
+Requires:       qt6-qtbase-devel
 
 %description    devel
 Development files for libaccounts-qt6.

@@ -30,7 +30,7 @@ BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6Xml)
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(xkbcommon)
 

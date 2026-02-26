@@ -31,7 +31,7 @@ BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6WebSockets)
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-private-devel
 
 %description
 The Qt MQTT module provides a standard compliant implementation of the MQTT

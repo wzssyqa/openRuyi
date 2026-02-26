@@ -25,7 +25,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  qt6-qttools
 BuildRequires:  qt6-doctools
 BuildRequires:  qt6-linguist
-BuildRequires:  qt6-base-private-devel >= %{qt6_version}
+BuildRequires:  qt6-qtbase-private-devel >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}

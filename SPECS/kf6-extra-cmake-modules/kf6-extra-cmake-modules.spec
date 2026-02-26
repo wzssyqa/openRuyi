@@ -23,7 +23,7 @@ BuildOption(conf):  -DQT_MAJOR_VERSION=6
 BuildRequires:  cmake
 BuildRequires:  kf6-rpm-macros
 BuildRequires:  gcc-c++
-BuildRequires:  qt6-base
+BuildRequires:  qt6-qtbase
 # BuildRequires:  python-sphinx
 
 Requires:       gcc-c++

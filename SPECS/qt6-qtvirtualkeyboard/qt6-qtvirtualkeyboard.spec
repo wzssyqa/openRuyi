@@ -28,7 +28,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  qt6-macros
 BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt6Quick) >= %{version}
 BuildRequires:  pkgconfig(Qt6Svg) >= %{version}
 BuildRequires:  pkgconfig(xkbcommon)

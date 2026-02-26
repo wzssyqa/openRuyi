@@ -31,8 +31,8 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  qt6-macros
 BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  qt6-base-private-devel
-BuildRequires:  qt6-languageserver-devel >= %{version}
+BuildRequires:  qt6-qtbase-private-devel
+BuildRequires:  qt6-qtlanguageserver-devel >= %{version}
 BuildRequires:  pkgconfig(Qt6ShaderTools) >= %{version}
 BuildRequires:  pkgconfig(Qt6Svg) >= %{version}
 BuildRequires:  python3

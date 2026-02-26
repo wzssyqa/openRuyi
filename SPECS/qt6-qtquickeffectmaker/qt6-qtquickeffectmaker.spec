@@ -29,7 +29,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  desktop-file-utils
 BuildRequires:  qt6-macros
 BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Quick)

@@ -31,7 +31,7 @@ BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6ShaderTools)
 BuildRequires:  pkgconfig(Qt6Xml)
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt6Quick) >= %{version}
 BuildRequires:  pkgconfig(Qt6ShaderTools)
 BuildRequires:  pkgconfig(xkbcommon)

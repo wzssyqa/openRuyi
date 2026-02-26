@@ -33,8 +33,8 @@ BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6OpenGL)
-BuildRequires:  qt6-base-static
-BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-qtbase-static
+BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt6Quick)
 BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  wayland-protocols

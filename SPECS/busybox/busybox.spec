@@ -54,6 +54,10 @@ make defconfig # Create the maximum "sane" configuration.
 install -Dm0755 busybox %{buildroot}%{_bindir}/busybox
 install -Dm644 docs/busybox.1 %{buildroot}%{_mandir}/man1/busybox.1
 
+%check -p
+# This test might not fit OBS environment.
+rm -f testsuite/taskset.tests
+
 %files
 %license LICENSE
 %doc README examples

@@ -10,6 +10,10 @@ on:
     branches: [main]
     paths:
      - 'SPECS/**'
+concurrency:
+  group: update_package
+  cancel-in-progress: false
+
 jobs:
   build:
     runs_on: ubuntu-latest

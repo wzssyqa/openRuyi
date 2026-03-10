@@ -29,7 +29,7 @@ Source0:        https://ftpmirror.gnu.org/gnu/binutils/binutils-%{version}.tar.b
 Source1:        https://ftpmirror.gnu.org/gnu/binutils/binutils-%{version}.tar.bz2.sig
 BuildSystem:    autotools
 
-BuildOption(build): -C build-dir
+BuildOption(build):  -C build-dir
 
 BuildRequires:  gcc-c++
 BuildRequires:  bison
@@ -38,7 +38,7 @@ BuildRequires:  flex
 # for the testsuite
 BuildRequires:  glibc-static
 BuildRequires:  texinfo
-BuildRequires:  zlib-devel-static
+BuildRequires:  zlib-ng-compat-static
 BuildRequires:  pkgconfig(libzstd)
 
 %if %{with libalternatives}

@@ -12,6 +12,10 @@
   print(count > 1 and "-stable" or "") \
 }
 
+# Avoid OOM on RISC-V builders
+%define _lto_cflags %{nil}
+%global _smp_build_ncpus 16
+
 Name:           dpdk
 Version:        25.07
 Release:        %autorelease
@@ -34,6 +38,7 @@ BuildRequires:  libpcap-devel
 BuildRequires:  zlib-devel
 BuildRequires:  numactl-devel
 BuildRequires:  openssl-devel
+BuildRequires:  rdma-core-devel
 
 %patchlist
 # 25.11
@@ -55,6 +60,7 @@ fast packet processing in the user space.
 %package        devel
 Summary:        Data Plane Development Kit development files
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       rdma-core-devel
 
 %description    devel
 This package contains the headers and other files needed for developing

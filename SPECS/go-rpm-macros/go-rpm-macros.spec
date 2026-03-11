@@ -10,9 +10,9 @@ Release:        %autorelease
 Summary:        Go macros for openRuyi packaging
 License:        MIT
 # TODO: Update the URL when there is a proper project page
-URL:            https://git.oerv.ac.cn/misaka00251/go-rpm-macros
+URL:            https://git.openruyi.cn/misaka00251/go-rpm-macros
 #!RemoteAsset
-Source0:        https://git.oerv.ac.cn/misaka00251/go-rpm-macros/archive/v%{version}.tar.gz
+Source0:        https://git.openruyi.cn/misaka00251/go-rpm-macros/archive/v%{version}.tar.gz
 BuildArch:      noarch
 
 %description

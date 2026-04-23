@@ -19,10 +19,10 @@ Version:        2.46.0
 Release:        %autorelease
 URL:            https://www.gnu.org/software/binutils/
 VCS:            git:https://sourceware.org/git/binutils-gdb.git
-#!RemoteAsset:  sha256:1393f90db70c2ebd785fb434d6127f8888c559d5eeb9c006c354b203bab3473e
+#!RemoteAsset:  sha256:0f3152632a2a9ce066f20963e9bb40af7cf85b9b6c409ed892fd0676e84ecd12
 Source0:        https://ftpmirror.gnu.org/gnu/binutils/binutils-%{version}.tar.bz2
-Patch0:         binutils-Wdiscarded-qualifers-1.patch
-Patch1:         binutils-Wdiscarded-qualifers-2.patch
+Patch0:         1001-binutils-fix-C23-Wdiscarded-qualifiers-errors.patch
+Patch1:         1002-Fix-even-more-Wdiscarded-qualifers-issues.patch
 BuildSystem:    autotools
 
 BuildOption(build):  -C build-dir
@@ -59,6 +59,7 @@ build programs which use the GNU BFD library, which is part of
 binutils.
 
 %conf
+# FIXME: upstream problem with C23.
 %define _configure CFLAGS="-Wno-error" LDFLAGS="-Wno-error" ../configure
 mkdir build-dir
 cd build-dir

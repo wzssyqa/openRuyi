@@ -1,7 +1,7 @@
-From ea6ab5365a7c4e07ac865e4f379ebbf4fd4c9192 Mon Sep 17 00:00:00 2001
+From 38a21a2b1da4549ce19b20bebceaefad52f9efe6 Mon Sep 17 00:00:00 2001
 From: YunQiang Su <yunqiang@isrc.iscas.ac.cn>
 Date: Wed, 15 Apr 2026 15:48:55 +0800
-Subject: [PATCH] Support Vendor openruyi
+Subject: [PATCH 1/2] Support Vendor openruyi
 
 openRuyi is a rolling release focusing on RISC-V support, which is
 launched by Institute of Software, CAS.
@@ -39,10 +39,10 @@ index 7fda8ea50223..63ceaefb1187 100644
  }
  
 diff --git a/llvm/include/llvm/TargetParser/Triple.h b/llvm/include/llvm/TargetParser/Triple.h
-index 9c83abeeb3b1..eb81fa014479 100644
+index 7b24db121818..def8139afe3a 100644
 --- a/llvm/include/llvm/TargetParser/Triple.h
 +++ b/llvm/include/llvm/TargetParser/Triple.h
-@@ -203,7 +203,8 @@ public:
+@@ -207,7 +207,8 @@ public:
      OpenEmbedded,
      Intel,
      Meta,
@@ -53,11 +53,11 @@ index 9c83abeeb3b1..eb81fa014479 100644
    enum OSType {
      UnknownOS,
 diff --git a/llvm/lib/TargetParser/Triple.cpp b/llvm/lib/TargetParser/Triple.cpp
-index a4f9dd42c0fe..c31cd76ff3ad 100644
+index c6515425b7eb..ad8f2f3d1ae3 100644
 --- a/llvm/lib/TargetParser/Triple.cpp
 +++ b/llvm/lib/TargetParser/Triple.cpp
-@@ -283,6 +283,8 @@ StringRef Triple::getVendorTypeName(VendorType Kind) {
-   case SUSE: return "suse";
+@@ -389,6 +389,8 @@ StringRef Triple::getVendorTypeName(VendorType Kind) {
+     return "suse";
    case Meta:
      return "meta";
 +  case openRuyi:
@@ -65,7 +65,7 @@ index a4f9dd42c0fe..c31cd76ff3ad 100644
    }
  
    llvm_unreachable("Invalid VendorType!");
-@@ -703,6 +705,7 @@ static Triple::VendorType parseVendor(StringRef VendorName) {
+@@ -912,6 +914,7 @@ static Triple::VendorType parseVendor(StringRef VendorName) {
        .Case("oe", Triple::OpenEmbedded)
        .Case("intel", Triple::Intel)
        .Case("meta", Triple::Meta)
@@ -74,7 +74,7 @@ index a4f9dd42c0fe..c31cd76ff3ad 100644
  }
  
 diff --git a/llvm/unittests/TargetParser/TripleTest.cpp b/llvm/unittests/TargetParser/TripleTest.cpp
-index b2e498ee10b3..942f3de0a105 100644
+index 9ce222b6c9c3..7f59a36003d4 100644
 --- a/llvm/unittests/TargetParser/TripleTest.cpp
 +++ b/llvm/unittests/TargetParser/TripleTest.cpp
 @@ -854,6 +854,12 @@ TEST(TripleTest, ParsedIDs) {
@@ -91,4 +91,5 @@ index b2e498ee10b3..942f3de0a105 100644
    EXPECT_EQ(Triple::arm, T.getArch());
    EXPECT_EQ(Triple::SUSE, T.getVendor());
 -- 
-2.53.0
+2.47.3
+

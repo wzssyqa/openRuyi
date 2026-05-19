@@ -12,7 +12,7 @@
 %global maj_ver 23
 %global min_ver 0
 %global patch_ver 0
-%global git_ver 20260428giteac6d03f
+%global git_ver 20260519gita3f12670
 
 %bcond check 0
 
@@ -34,10 +34,6 @@
 %global build_cxxflags %{?build_cxxflags} -fno-lto
 %global build_fflags %{?build_fflags} -fno-lto
 
-#%ifarch riscv64
-%global _smp_mflags -j16
-#%endif
-
 # llvm
 # Apart from compiler-rt and libcxx, everything is installed into a
 # version-specific prefix. Non-compat packages add symlinks to this prefix.
@@ -55,6 +51,16 @@
 %global experimental_targets_to_build ""
 %global build_install_prefix %{buildroot}%{install_prefix}
 %global llvm_triple %{_target_platform}
+
+# enabled projects and runtimes
+%global projects clang;clang-tools-extra;lld
+%global runtimes compiler-rt;openmp
+%global projects %{projects};lldb
+%global projects %{projects};mlir
+%global projects %{projects};bolt
+%global projects %{projects};polly
+%global projects %{projects};flang
+%global runtimes %{runtimes};libcxx;libcxxabi;libunwind
 
 # clang
 
@@ -76,13 +82,15 @@ VCS:            git:https://github.com/llvm/llvm-project.git
 Source0:        llvm-project-%{git_ver}.tar.xz
 
 # please keep the patches in different groups for easier maintenance
-Patch0:         llvm-add-triple-openruyi.patch
+%if "%{openruyi_riscv_arch}" == "-march=rva23u64"
+Patch2000:         2000-Add-riscv64-openruyi-linux-triple-and-set-it-to-rva2.patch
+%endif
+Patch2001:         2001-Add-openruyi-linux-to-X86_64Triples-and-RISCV64Tripl.patch
 
 # clang patches
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
-BuildRequires:  chrpath
 BuildRequires:  ninja
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libzstd)
@@ -108,8 +116,8 @@ BuildRequires:  python3dist(pyyaml)
 BuildRequires:  python3dist(nanobind)
 # for python buildrequires
 BuildRequires:  python3dist(setuptools)
-BuildRequires:  python3dist(pexpect)
 BuildRequires:  python3dist(pip)
+BuildRequires:  python3dist(psutil)
 BuildRequires:  pyproject-rpm-macros
 # for tests
 BuildRequires:  perl(Digest::MD5)
@@ -147,8 +155,6 @@ Requires:       pkgconfig(libzstd)
 # llvm-gtest.
 Requires:       llvm%{maj_ver}-static = %{version}-%{release}
 Provides:       llvm-devel(major) = %{maj_ver}
-Requires(post): chkconfig
-Requires(postun): chkconfig
 
 %description -n llvm%{maj_ver}-devel
 This package contains library and header files needed to develop new native
@@ -179,7 +185,6 @@ Summary:        A C language family front-end for LLVM (%{maj_ver})
 Requires:       clang%{maj_ver}-libs%{?_isa} = %{version}-%{release}
 # clang requires gcc, clang++ requires libstdc++-devel
 Requires:       libstdc++-devel
-Requires:       gcc-c++
 Provides:       clang(major) = %{maj_ver}
 
 %description -n clang%{maj_ver}
@@ -485,8 +490,7 @@ on integer polyhedron to analyze and optimize the memory access pattern of a
 program.
 
 %prep
-%autosetup -N -T -b 0 -n %{src_tarball_dir}
-%autopatch -p1
+%autosetup -p1 -T -b 0 -n %{src_tarball_dir}
 
 %py3_shebang_fix \
     llvm/tools/opt-viewer/*.py \
@@ -507,14 +511,6 @@ program.
 %py3_shebang_fix libcxx/utils/
 
 %build
-%global projects clang;clang-tools-extra;lld
-%global runtimes compiler-rt;openmp
-%global projects %{projects};lldb
-%global projects %{projects};mlir
-%global projects %{projects};bolt
-%global projects %{projects};polly
-%global projects %{projects};flang
-%global runtimes %{runtimes};libcxx;libcxxabi;libunwind
 export ASMFLAGS="%{build_cflags}"
 export FFLAGS=`echo %{build_fflags} | sed -e "s/-pipe//g" -e "s/-funwind-tables//g" -e "s/-fasynchronous-unwind-tables//g" -e "s/-fstack-protector-strong//g" -e "s/-fstack-clash-protection//g" -e "s/-Wformat//g" -e "s/-Werror=format-security//g"`
 export FCFLAGS=${FFLAGS}
@@ -543,8 +539,7 @@ OLD_CWD="$PWD"
 
 %ifarch riscv64
 %global cmake_common_args %{cmake_common_args} \\\
-    -DLLVM_PARALLEL_LINK_JOBS=2 \\\
-    -DLLVM_PARALLEL_COMPILE_JOBS=16
+    -DLLVM_PARALLEL_LINK_JOBS=2
 %endif
 
 %global cmake_config_args %{cmake_common_args}
@@ -563,7 +558,7 @@ OLD_CWD="$PWD"
 
 # compiler-rt options
 %global cmake_config_args %{cmake_config_args} \\\
-    -DCOMPILER_RT_INCLUDE_TESTS:BOOL=OFF 
+    -DCOMPILER_RT_INCLUDE_TESTS:BOOL=OFF
 
 # docs options
 %global cmake_config_args %{cmake_config_args} \\\
@@ -722,6 +717,7 @@ rm -rf %{buildroot}/%{install_prefix}/src
 rm -f %{buildroot}/%{install_libdir}/libllvm_gtest*
 
 %check
+# it takes days to complete the testing. Let's just disable it for now.
 
 %post -n lld%{maj_ver}
 update-alternatives --install %{_bindir}/ld ld %{_bindir}/ld.lld 1
@@ -1152,8 +1148,8 @@ fi
 %{install_python3mod}/mlir
 
 %files -n libcxx%{maj_ver}
-%license libcxx/LICENSE.TXT
 %doc libcxx/CREDITS.TXT libcxx/TODO.TXT
+%license libcxx/LICENSE.TXT
 %{install_libdir}/%{llvm_triple}/libc++.so.*
 
 %files -n libcxx%{maj_ver}-devel
@@ -1171,8 +1167,8 @@ fi
 %{install_libdir}/%{llvm_triple}/libc++experimental.a
 
 %files -n libcxxabi%{maj_ver}
-%license libcxxabi/LICENSE.TXT
 %doc libcxxabi/CREDITS.TXT
+%license libcxxabi/LICENSE.TXT
 %{install_libdir}/%{llvm_triple}/libc++abi.so.*
 
 %files -n libcxxabi%{maj_ver}-devel
@@ -1221,4 +1217,4 @@ fi
 %{install_libdir}/cmake/polly
 
 %changelog
-%{?autochangelog}
+%autochangelog

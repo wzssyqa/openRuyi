@@ -12,7 +12,8 @@
 %global maj_ver 23
 %global min_ver 0
 %global patch_ver 0
-%global git_ver 20260519gita3f12670
+%global git_ver 20260519gitb6d485ff
+%global git_commit b6d485ffdc00a88f0c5faf75ab9bf689ac6cdafb
 
 %bcond check 0
 
@@ -27,7 +28,7 @@
 %endif
 
 # Suffixless tarball name (essentially: basename -s .tar.xz llvm-project-17.0.6.src.tar.xz)
-%global src_tarball_dir llvm-project
+%global src_tarball_dir llvm-project-%{git_commit}
 
 %global build_ldflags %{?build_ldflags} -Wl,--build-id=sha1
 %global build_cflags %{?build_cflags} -fno-lto
@@ -78,8 +79,8 @@ Summary:        The Low Level Virtual Machine (%{maj_ver})
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
 URL:            http://llvm.org
 VCS:            git:https://github.com/llvm/llvm-project.git
-#!RemoteAsset
-Source0:        llvm-project-%{git_ver}.tar.xz
+#!RemoteAsset:  sha256:cc4c31a75a856ca13ce21d09fe78059562a4f1f40377530b596a552bdccc5f11
+Source0:        https://github.com/llvm/llvm-project/archive/%{git_commit}.tar.gz
 
 # please keep the patches in different groups for easier maintenance
 %if "%{openruyi_riscv_arch}" == "-march=rva23u64"
@@ -114,6 +115,7 @@ BuildRequires:  python3dist(numpy)
 BuildRequires:  python3dist(pybind11)
 BuildRequires:  python3dist(pyyaml)
 BuildRequires:  python3dist(nanobind)
+BuildRequires:  python3dist(cryptography)
 # for python buildrequires
 BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(pip)
@@ -976,6 +978,8 @@ fi
     offload-arch
     clang-ssaf-format
     clang-ssaf-linker
+    clang-ssaf-analyzer
+    llvm-extract-bundle-entry
 }}
 %{install_datadir}/clang/clang-format.py*
 %{install_datadir}/clang/clang-format-diff.py*

@@ -995,7 +995,7 @@ for commlib in asan atomic gcc_s gfortran gomp hwasan itm lsan objc quadmath std
 done
 rm -rf %{buildroot}/%{_datadir}/gcc%{binsuffix}/python/libstdcxx
 for mo in `cat libstdc++.lang | awk '{print $2}'`;do
-	rm -f %{buildroot}/$mo
+  rm -f %{buildroot}/$mo
 done
 rm -f %{buildroot}/%{_datadir}/gdb/auto-load/%{mainlibdir}/libstdc++.so.*-gdb.py
 %endif
@@ -1304,17 +1304,17 @@ rm -f %{buildroot}/%{_datadir}/gdb/auto-load/%{mainlibdir}/libstdc++.so.*-gdb.py
 %{mainlibdir}/libgomp.so.*
 %endif
 
-%if %{with common_packages}
 %ifarch %{asan_arch}
+%if %{with common_packages}
 %files -n libasan
 %defattr(-,root,root)
 %{mainlibdir}/libasan.so.*
 %endif
 %endif
 
-%if %{with common_packages}
 %ifarch %{lsan_arch}
 %if %{build_primary_64bit}
+%if %{with common_packages}
 %files -n liblsan
 %defattr(-,root,root)
 %{mainlibdir}/liblsan.so.*
@@ -1322,9 +1322,9 @@ rm -f %{buildroot}/%{_datadir}/gdb/auto-load/%{mainlibdir}/libstdc++.so.*-gdb.py
 %endif
 %endif
 
-%if %{with common_packages}
 %ifarch %{tsan_arch}
 %if %{build_primary_64bit}
+%if %{with common_packages}
 %files -n libtsan
 %defattr(-,root,root)
 %{mainlibdir}/libtsan.so.*
@@ -1332,40 +1332,40 @@ rm -f %{buildroot}/%{_datadir}/gdb/auto-load/%{mainlibdir}/libstdc++.so.*-gdb.py
 %endif
 %endif
 
-%if %{with common_packages}
 %ifarch %{hwasan_arch}
+%if %{with common_packages}
 %files -n libhwasan
 %defattr(-,root,root)
 %{mainlibdir}/libhwasan.so.*
 %endif
 %endif
 
-%if %{with common_packages}
 %ifarch %{atomic_arch}
+%if %{with common_packages}
 %files -n libatomic
 %defattr(-,root,root)
 %{mainlibdir}/libatomic.so.*
 %endif
 %endif
 
-%if %{with common_packages}
 %ifarch %{itm_arch}
+%if %{with common_packages}
 %files -n libitm
 %defattr(-,root,root)
 %{mainlibdir}/libitm.so.*
 %endif
 %endif
 
-%if %{with common_packages}
 %ifarch %{ubsan_arch}
+%if %{with common_packages}
 %files -n libubsan
 %defattr(-,root,root)
 %{mainlibdir}/libubsan.so.*
 %endif
 %endif
 
-%if %{with common_packages}
 %ifarch %{vtv_arch}
+%if %{with common_packages}
 %files -n libvtv
 %defattr(-,root,root)
 %{mainlibdir}/libvtv.so.*

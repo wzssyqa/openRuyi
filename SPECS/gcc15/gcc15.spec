@@ -14,8 +14,8 @@
 %define slibdir64 %{_prefix}/lib64
 %define usrmerged 1
 
-%bcond_without bootstrap
-%bcond_with common_packages
+%bcond bootstrap 1
+%bcond common_packages 0
 
 %define quadmath_arch x86_64
 %define tsan_arch x86_64 riscv64

@@ -712,9 +712,6 @@ export CARGO=/bin/true
 %endif
 %if "%{TARGET_ARCH}" == "riscv64"
   --disable-multilib \
-%if "%{openruyi_riscv_arch}" == "-march=rva23u64"
-  --with-arch=rva23u64 --with-abi=lp64d \
-%endif
 %endif
 %if %{with bootstrap}
 %if %{use_lto_bootstrap} && !0%{?building_testsuite:1}

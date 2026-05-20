@@ -221,7 +221,7 @@ library. It is needed for compiling C++ code.
 %package     -n libgomp
 Summary:        The GNU compiler collection OpenMP runtime library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
-Provides:       libgomp{libsuffix} = %{version}-%{release}
+Provides:       libgomp%{libsuffix} = %{version}-%{release}
 Obsoletes:      libgomp-gcc15 < 16
 Conflicts:      libgomp-gcc15 < 16
 

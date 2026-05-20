@@ -120,6 +120,7 @@ BuildRequires:  python3dist(cryptography)
 BuildRequires:  python3dist(setuptools)
 BuildRequires:  python3dist(pip)
 BuildRequires:  python3dist(psutil)
+BuildRequires:  python3dist(pexpect)
 BuildRequires:  pyproject-rpm-macros
 # for tests
 BuildRequires:  perl(Digest::MD5)
@@ -571,7 +572,9 @@ OLD_CWD="$PWD"
     -DLLVM_BUILD_DOCS:BOOL=OFF
 
 # lldb options
-%global cmake_config_args %{cmake_config_args} -DLLDB_ENFORCE_STRICT_TEST_REQUIREMENTS:BOOL=ON
+%global cmake_config_args %{cmake_config_args} \\\
+    -DLLDB_ENFORCE_STRICT_TEST_REQUIREMENTS:BOOL=ON \\\
+    -DLLDB_PYTHON_RELATIVE_PATH=lib/python%{python3_version}/site-packages
 
 # libcxx options
 %global cmake_config_args %{cmake_config_args}  \\\
@@ -710,8 +713,6 @@ done
 popd
 
 mkdir -p %{buildroot}/%{install_python3mod}
-#FIXME: why lldb install python mod here?
-mv -f %{buildroot}/%{install_prefix}/lib64/python%{python3_version}/site-packages/* %{buildroot}/%{install_python3mod}
 cp -a clang/bindings/python/clang %{buildroot}/%{install_python3mod}
 mv -f %{buildroot}/%{install_prefix}/python_packages/mlir_core/mlir %{buildroot}/%{install_python3mod}
 

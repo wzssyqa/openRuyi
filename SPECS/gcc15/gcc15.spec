@@ -76,7 +76,7 @@ Version:        15.2.0
 Release:        %autorelease
 License:        GPL-3.0-or-later
 Summary:        The GNU C Compiler and Support Files
-#!RemoteAsset
+#!RemoteAsset:  sha256:438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e
 Source:         https://ftpmirror.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 
 BuildRequires:  xz

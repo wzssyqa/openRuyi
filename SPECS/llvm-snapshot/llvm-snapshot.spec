@@ -12,8 +12,8 @@
 %global maj_ver 23
 %global min_ver 0
 %global patch_ver 0
-%global git_ver 20260519gitb6d485ff
-%global git_commit b6d485ffdc00a88f0c5faf75ab9bf689ac6cdafb
+%global git_ver git20260601.28be1ea
+%global git_commit 28be1eaf755a36187c40c2e251a663f811db5d9c
 
 %bcond check 0
 
@@ -1003,6 +1003,7 @@ rm -f %{buildroot}/%{install_libdir}/libllvm_gtest*
 %{install_bindir}/flang-%{maj_ver}
 %{install_libdir}/cmake/flang
 %{install_libdir}/clang/%{maj_ver}/lib/%{llvm_triple}/libflang_rt.*
+%{install_libdir}/clang/%{maj_ver}/finclude
 %{install_includedir}/flang
 %{install_includedir}/flang-rt
 

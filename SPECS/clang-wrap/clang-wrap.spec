@@ -41,7 +41,7 @@ while read file; do
     name=$(basename $file)
     case $name in
         clang-[0-9]* | clang++-[0-9]* | clang | clang++)
-           ln -sf %{_libdir}/clang-wrap/bin/clang %{_var}/lib/clang-wrap/$name 
+           ln -sf %{_libdir}/clang-wrap/bin/clang %{_var}/lib/clang-wrap/$name
            ;;
     esac
 done
@@ -69,7 +69,7 @@ for file in `ls %{_bindir}/clang* 2>/dev/null`;do
     name=$(basename $file)
     case $name in
         clang-[0-9]* | clang++-[0-9]* | clang | clang++)
-           ln -sf clang %{_var}/lib/clang-wrap/$name 
+           ln -sf clang %{_var}/lib/clang-wrap/$name
            ;;
     esac
 done

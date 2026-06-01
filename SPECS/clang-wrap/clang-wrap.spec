@@ -17,6 +17,8 @@ URL:            https://github.com/openRuyi-Project/clang-wrap
 Source0:        https://github.com/openRuyi-Project/clang-wrap/archive/%{git_commit}.tar.gz
 BuildSystem:    rust
 
+BuildRequires:  cargo
+BuildRequires:  rust
 BuildRequires:  rust-rpm-macros
 BuildRequires:  crate(pathdiff-0.2/default)
 

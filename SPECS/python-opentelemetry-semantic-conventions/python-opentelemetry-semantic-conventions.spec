@@ -38,8 +38,8 @@ a set of well-defined attribute keys and values for common telemetry concepts.
 %pyproject_buildrequires
 
 %files -f %{pyproject_files}
-%license LICENSE
 %doc README.rst
+%license LICENSE
 
 %changelog
 %autochangelog

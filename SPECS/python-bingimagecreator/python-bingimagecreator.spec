@@ -6,7 +6,7 @@
 
 %global srcname BingImageCreator
 
-Name:           python-%{srcname}
+Name:           python-bingimagecreator
 Version:        0.5.0
 Release:        %autorelease
 Summary:        High quality image generation by Microsoft Bing Image Creator
@@ -16,6 +16,9 @@ URL:            https://github.com/acheong08/BingImageCreator
 Source0:        https://files.pythonhosted.org/packages/source/b/%{srcname}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 BuildSystem:    pyproject
+
+# Upstream seems dead, but we still need to drop pkg_resources
+Patch2000:      2000-Drop-pkg_resources.patch
 
 BuildOption(install):  -l %{srcname}
 
@@ -28,8 +31,8 @@ BuildRequires:  python3dist(httpx)
 BuildRequires:  python3dist(regex)
 BuildRequires:  python3dist(requests)
 
-Provides:       python3-%{srcname} = %{version}-%{release}
-%python_provide python3-%{srcname}
+Provides:       python3-bingimagecreator = %{version}-%{release}
+%python_provide python3-bingimagecreator
 
 %description
 High quality image generation by Microsoft Bing Image Creator.
@@ -40,8 +43,8 @@ Image Creator service.
 %pyproject_buildrequires
 
 %files -f %{pyproject_files}
-%license LICENSE
 %doc README.md
+%license LICENSE
 
 %changelog
 %autochangelog

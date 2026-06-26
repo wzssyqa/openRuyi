@@ -12,8 +12,8 @@
 %global maj_ver 23
 %global min_ver 0
 %global patch_ver 0
-%global git_ver git20260601.28be1ea
-%global git_commit 28be1eaf755a36187c40c2e251a663f811db5d9c
+%global git_ver git20260626.e2ac42b
+%global git_commit e2ac42b5cbe6ebda106805a41c8a20f90431652a
 
 %bcond check 0
 
@@ -79,7 +79,7 @@ Summary:        The Low Level Virtual Machine (%{maj_ver})
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
 URL:            http://llvm.org
 VCS:            git:https://github.com/llvm/llvm-project.git
-#!RemoteAsset:  sha256:cc4c31a75a856ca13ce21d09fe78059562a4f1f40377530b596a552bdccc5f11
+#!RemoteAsset:  sha256:c7553e58d0ca3b6a8bdc273c112f4b46387342009ec67fe24c9b75a1074d6434
 Source0:        https://github.com/llvm/llvm-project/archive/%{git_commit}.tar.gz
 
 # please keep the patches in different groups for easier maintenance
@@ -259,12 +259,13 @@ Requires:       clang%{maj_ver}-tools-extra%{?_isa} = %{version}-%{release}
 %description -n clang%{maj_ver}-tools-extra-devel
 Development header files for clang tools.
 
-%package    -n python3-clang%{maj_ver}
-Summary:        Python bindings for clang (%{maj_ver})
+%package    -n python-clang%{maj_ver}
+Summary:       Python bindings for clang (%{maj_ver})
 Requires:      clang%{maj_ver}-devel%{?_isa} = %{version}-%{release}
 Requires:      python3
+Provides:      python3-clang%{maj_ver}
 
-%description -n python3-clang%{maj_ver}
+%description -n python-clang%{maj_ver}
 Python bindings for clang.
 
 %package     -n flang%{maj_ver}
@@ -338,7 +339,7 @@ Summary:        Next generation high-performance debugger (%{maj_ver})
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
 URL:            http://lldb.llvm.org/
 Requires:       clang%{maj_ver}-libs%{?_isa} = %{version}-%{release}
-Recommends:     python3-lldb%{maj_ver}%{?_isa} = %{version}-%{release}
+Recommends:     python-lldb%{maj_ver}%{?_isa} = %{version}-%{release}
 
 %description -n lldb%{maj_ver}
 LLDB is a next generation, high-performance debugger. It is built as a set
@@ -353,13 +354,14 @@ Requires:       lldb%{maj_ver}%{?_isa} = %{version}-%{release}
 %description -n lldb%{maj_ver}-devel
 The package contains header files for the LLDB debugger.
 
-%package     -n python3-lldb%{maj_ver}
+%package     -n python-lldb%{maj_ver}
 Summary:        Python module for LLDB (%{maj_ver})
 Requires:       lldb%{maj_ver}%{?_isa} = %{version}-%{release}
 Obsoletes:      python3-lldb < %{version}-%{release}
 Conflicts:      python3-lldb < %{version}-%{release}
+Provides:       python3-lldb%{maj_ver}
 
-%description -n python3-lldb%{maj_ver}
+%description -n python-lldb%{maj_ver}
 The package contains the LLDB Python module.
 
 %package     -n mlir%{maj_ver}
@@ -390,12 +392,13 @@ Requires:       mlir%{maj_ver}-static%{?_isa} = %{version}-%{release}
 %description -n mlir%{maj_ver}-devel
 MLIR development files.
 
-%package     -n python3-mlir%{maj_ver}
+%package     -n python-mlir%{maj_ver}
 Summary:        MLIR python bindings (%{maj_ver})
 Requires:       python3
 Requires:       python3dist(numpy)
+Provides:       python3-mlir%{maj_ver}
 
-%description -n python3-mlir%{maj_ver}
+%description -n python-mlir%{maj_ver}
 MLIR python bindings.
 
 %package     -n libcxx%{maj_ver}
@@ -671,7 +674,7 @@ cd $OLD_CWD
 # Now let's build
 %cmake -G Ninja %{cmake_config_args} %{extra_cmake_opts} $extra_cmake_args
 # Build libLLVM.so first to avoid OOM errors.
-%cmake_build --target LLVM
+%cmake_build --target LLVM LLVMTestingSupport LLVMTestingAnnotations
 # Also build libclang-cpp.so separately to avoid OOM errors.
 %cmake_build --target libclang-cpp.so
 # Same for the three large MLIR dylibs.
@@ -714,10 +717,7 @@ mkdir -p %{buildroot}/%{install_python3mod}
 cp -a clang/bindings/python/clang %{buildroot}/%{install_python3mod}
 mv -f %{buildroot}/%{install_prefix}/python_packages/mlir_core/mlir %{buildroot}/%{install_python3mod}
 
-rm -rf %{buildroot}/%{install_includedir}/llvm-gtest
-rm -rf %{buildroot}/%{install_includedir}/llvm-gmock
 rm -rf %{buildroot}/%{install_prefix}/src
-rm -f %{buildroot}/%{install_libdir}/libllvm_gtest*
 
 %check
 # it takes days to complete the testing. Let's just disable it for now.
@@ -860,14 +860,15 @@ rm -f %{buildroot}/%{install_libdir}/libllvm_gtest*
 %{_bindir}/llvm-config-%{maj_ver}
 %{install_includedir}/llvm
 %{install_includedir}/llvm-c
+%{install_includedir}/llvm-gmock
+%{install_includedir}/llvm-gtest
 %{install_libdir}/libLLVM.so
 %{install_libdir}/cmake/llvm
 
 %files -n llvm%{maj_ver}-static
 %license llvm/LICENSE.TXT
 %{install_libdir}/libLLVM*.a
-%exclude %{install_libdir}/libLLVMTestingSupport.a
-%exclude %{install_libdir}/libLLVMTestingAnnotations.a
+%{install_libdir}/libllvm_gtest*.a
 
 %files -n clang%{maj_ver}
 %license clang/LICENSE.TXT
@@ -985,7 +986,7 @@ rm -f %{buildroot}/%{install_libdir}/libllvm_gtest*
 %license clang-tools-extra/LICENSE.TXT
 %{install_includedir}/clang-tidy
 
-%files -n python3-clang%{maj_ver}
+%files -n python-clang%{maj_ver}
 %license clang/LICENSE.TXT
 %{install_python3mod}/clang
 
@@ -1101,7 +1102,7 @@ rm -f %{buildroot}/%{install_libdir}/libllvm_gtest*
     yaml2macho-core
 }}
 
-%files -n python3-lldb%{maj_ver}
+%files -n python-lldb%{maj_ver}
 %{install_python3mod}/lldb
 
 %files -n mlir%{maj_ver}
@@ -1142,7 +1143,7 @@ rm -f %{buildroot}/%{install_libdir}/libllvm_gtest*
 %{install_libdir}/libmlir_*.so
 %{install_libdir}/libMLIR*.so
 
-%files -n python3-mlir%{maj_ver}
+%files -n python-mlir%{maj_ver}
 %{install_python3mod}/mlir
 
 %files -n libcxx%{maj_ver}

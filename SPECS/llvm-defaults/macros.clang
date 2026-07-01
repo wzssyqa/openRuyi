@@ -6,4 +6,4 @@
 # headers and libraries.  This path should be used by packages that need to
 # install files into this directory.  This macro's value changes every time
 # clang's version changes.
-%clang_resource_dir %{_libdir}/llvm22/lib/clang/%{clang_major_version}
+%clang_resource_dir %{_libdir}/llvm%{clang_major_version}/lib/clang/%{clang_major_version}

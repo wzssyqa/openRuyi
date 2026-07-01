@@ -187,6 +187,7 @@ Requires:       clang%{maj_ver}-libs%{?_isa} = %{version}-%{release}
 # clang requires gcc, clang++ requires libstdc++-devel
 Requires:       libstdc++-devel%{?_isa}
 Provides:       clang(major) = %{maj_ver}
+Obsoletes:      clang-rpm-macros < 22-13
 
 %description -n clang%{maj_ver}
 clang is a C language family front-end toolkit.
@@ -715,6 +716,9 @@ mv -f %{buildroot}/%{install_prefix}/python_packages/mlir_core/mlir %{buildroot}
 
 rm -rf %{buildroot}/%{install_prefix}/src
 
+mkdir -p %{buildroot}%{_rpmmacrodir}
+echo "%%clang%{maj_ver}_resource_dir %%{install_prefix}/lib/clang/%{maj_ver}" > %{buildroot}%{_rpmmacrodir}/macros.clang%{maj_ver}
+
 %check
 # it takes days to complete the testing. Let's just disable it for now.
 
@@ -876,6 +880,7 @@ rm -rf %{buildroot}/%{install_prefix}/src
 }}
 %{install_bindir}/clang-%{maj_ver}
 %{install_datadir}/clang
+%{_rpmmacrodir}/macros.clang%{maj_ver}
 
 %files -n clang%{maj_ver}-libs
 %license clang/LICENSE.TXT

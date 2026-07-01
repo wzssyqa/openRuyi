@@ -5,6 +5,8 @@
 #
 # SPDX-License-Identifier: MulanPSL-2.0
 
+%define __install /var/lib/clang-wrap/install
+
 Name:           gsl
 Version:        2.8
 Release:        %autorelease
@@ -19,10 +21,16 @@ BuildSystem:    autotools
 BuildOption(conf):  --disable-silent-rules
 BuildOption(conf):  --disable-static
 BuildOption(conf):  CFLAGS="%{optflags} -ffp-contract=off"
+BuildOption(conf):  CC=clang CXX=clang++
 
-BuildRequires:  gcc
+# https://lists.gnu.org/archive/html/bug-gsl/2026-05/msg00004.html
+# Undefined behavior in gsl_pow_int
+Patch0:         2000-Fix-undefined-behavior-in-gsl_pow_int.patch
+
 BuildRequires:  pkgconfig
 BuildRequires:  make
+BuildRequires:  clang-wrap
+BuildRequires:  llvm
 
 %description
 The GNU Scientific Library (GSL) is a collection of routines for
@@ -37,16 +45,52 @@ Requires:       pkgconfig
 The gsl-devel package contains the header files necessary for
 developing programs using the GSL (GNU Scientific Library).
 
-%install -a
-rm -rf %{buildroot}%{_infodir}/dir
+%prep -a
+%autosetup -p1
+
+%conf -p
+%ifarch riscv64
+export EMIT_LLVMIR=-march=rva23u64
+%elifarch x86_64
+export EMIT_LLVMIR=-march=x86-64-v4
+%else
+export EMIT_LLVMIR=1
+%endif
+export PATH=/var/lib/clang-wrap:$PATH
+
+%build -p
+%ifarch riscv64
+export EMIT_LLVMIR=-march=rva23u64
+%elifarch x86_64
+export EMIT_LLVMIR=-march=x86-64-v4
+%else
+export EMIT_LLVMIR=1
+%endif
+export PATH=/var/lib/clang-wrap:$PATH
+
+%install -p
+%ifarch riscv64
+export EMIT_LLVMIR=-march=rva23u64
+%elifarch x86_64
+export EMIT_LLVMIR=-march=x86-64-v4
+%else
+export EMIT_LLVMIR=1
+%endif
+export PATH=/var/lib/clang-wrap:$PATH
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
 %{_bindir}/gsl-histogram
+%{_bindir}/../lib/llvmir-bin/gsl-histogram
+%{_bindir}/../lib/llvmir-bin/gsl-histogram_cmd
 %{_bindir}/gsl-randist
+%{_bindir}/../lib/llvmir-bin/gsl-randist
+%{_bindir}/../lib/llvmir-bin/gsl-randist_cmd
 %{_libdir}/libgsl.so.28*
+%{_libdir}/llvmir/libgsl.so.28*
 %{_libdir}/libgslcblas.so.0*
+%{_libdir}/llvmir/libgslcblas.so.0*
 %{_mandir}/man1/gsl-histogram.1*
 %{_mandir}/man1/gsl-randist.1*
 

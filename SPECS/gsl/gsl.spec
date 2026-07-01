@@ -31,6 +31,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  make
 BuildRequires:  clang-wrap
 BuildRequires:  llvm
+BuildRequires:  clang
 
 %description
 The GNU Scientific Library (GSL) is a collection of routines for

@@ -14,7 +14,7 @@ Summary:        The GNU Scientific Library for numerical analysis
 License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/gsl/
 VCS:            git:https://git.savannah.gnu.org/git/gsl.git
-#!RemoteAsset
+#!RemoteAsset:  sha256:6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190
 Source0:        https://ftpmirror.gnu.org/gnu/gsl/gsl-%{version}.tar.gz
 BuildSystem:    autotools
 
@@ -107,4 +107,4 @@ export PATH=/var/lib/clang-wrap:$PATH
 %{_includedir}/gsl/
 
 %changelog
-%{?autochangelog}
+%autochangelog

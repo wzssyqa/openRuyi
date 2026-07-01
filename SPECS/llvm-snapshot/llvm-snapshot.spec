@@ -12,8 +12,8 @@
 %global maj_ver 23
 %global min_ver 0
 %global patch_ver 0
-%global git_ver git20260626.e2ac42b
-%global git_commit e2ac42b5cbe6ebda106805a41c8a20f90431652a
+%global git_ver git20260701.c7e2809
+%global git_commit c7e2809a631a2fbe73a13e5f2d2e48bc3f3dcf18
 
 %bcond check 0
 
@@ -79,7 +79,7 @@ Summary:        The Low Level Virtual Machine (%{maj_ver})
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
 URL:            http://llvm.org
 VCS:            git:https://github.com/llvm/llvm-project.git
-#!RemoteAsset:  sha256:c7553e58d0ca3b6a8bdc273c112f4b46387342009ec67fe24c9b75a1074d6434
+#!RemoteAsset:  sha256:978c698af342692419133eea3b23bc6137e6f341101abf41d8164ca148258bb2
 Source0:        https://github.com/llvm/llvm-project/archive/%{git_commit}.tar.gz
 
 # please keep the patches in different groups for easier maintenance
